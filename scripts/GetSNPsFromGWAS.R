@@ -9,7 +9,12 @@ disease_list <-  read_csv(snakemake@config$disease_list)
 
 gwas_catalog <- read_tsv(snakemake@config$gwas_catalog)
 
-extra_gwas <- read_tsv(snakemake@config$extra_gwas)
+if (snakemake@config$extra_gwas != "") {
+    extra_gwas <- read_tsv(snakemake@config$extra_gwas)    
+} else {
+    extra_gwas <- tibble()
+}
+
 
 gwas_index_snps <- gwas_catalog %>%
     filter(`DISEASE/TRAIT` %in% disease_list$GWAS_term) %>%
