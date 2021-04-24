@@ -1,0 +1,16 @@
+*
+!Snakefile
+!scripts
+!scripts/*
+!lib
+!lib/*
+!schemas
+!schemas/*
+!config.yaml
+!envs
+!envs/*
+!LICENSE
+!README.md
+!rules
+!rules/*
+!.gitignore

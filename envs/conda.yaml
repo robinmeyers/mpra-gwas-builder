@@ -1,0 +1,14 @@
+name: mpra-gwas-builder
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - snakemake
+  - r-base
+  - r-tidyverse
+  - r-magrittr
+  - r-LDlinkR
+  - bioconductor-plyranges
+  - bioconductor-SNPlocs.Hsapiens.dbSNP144.GRCh37
+  - bioconductor-SNPlocs.Hsapiens.dbSNP151.GRCh38
+  - bioconductor-XtraSNPlocs.Hsapiens.dbSNP141.GRCh38

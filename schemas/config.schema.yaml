@@ -1,0 +1,23 @@
+$schema: "http://json-schema.org/draft-06/schema#"
+
+description: snakemake configuration file
+
+type: object
+
+properties:
+  study:
+    type: string
+
+  gwas_catalog:
+    type: string
+
+  disease_list:
+    type: string
+
+  extra_gwas:
+    type: string
+
+required:
+  - study
+  - gwas_catalog
+  - disease_list
