@@ -30,24 +30,29 @@ gwas_snps_no_rsID <- gwas_index_snps %>%
     filter(!str_detect(SNPS, "^rs\\d+$"))
 
 
+if (nrow(gwas_snps_no_rsID) > 0) {
 
-gwas_snps_no_rsID_fix <- gwas_snps_no_rsID %>%
-    mutate(SNPS_fix = SNPS) %>%
-    mutate(SNPS_fix = ifelse(str_detect(SNPS_fix, "^chr[0-9XY]+[^0-9XY]+\\d+$"),
-                             str_match(SNPS_fix, "^(chr[0-9XY]+)[^0-9XY]+(\\d+)$") %>% {paste0(.[,2], ":", .[,3])}, SNPS_fix)) %>%
-    mutate(SNPS_fix = ifelse(str_detect(SNPS_fix, "^[0-9XY]+-\\d+$"),
-                             str_match(SNPS_fix, "^([0-9XY]+)-(\\d+)$") %>% {paste0("chr", .[,2], ":", .[,3])}, SNPS_fix))
 
-## Manually inspect - anything not in "chr:pos" format will be filtered
-# gwas_snps_no_rsID_fix %>% select(SNPS, SNPS_fix) %>% View
+    gwas_snps_no_rsID_fix <- gwas_snps_no_rsID %>%
+        mutate(SNPS_fix = SNPS) %>%
+        mutate(SNPS_fix = ifelse(str_detect(SNPS_fix, "^chr[0-9XY]+[^0-9XY]+\\d+$"),
+                                 str_match(SNPS_fix, "^(chr[0-9XY]+)[^0-9XY]+(\\d+)$") %>% {paste0(.[,2], ":", .[,3])}, SNPS_fix)) %>%
+        mutate(SNPS_fix = ifelse(str_detect(SNPS_fix, "^[0-9XY]+-\\d+$"),
+                                 str_match(SNPS_fix, "^([0-9XY]+)-(\\d+)$") %>% {paste0("chr", .[,2], ":", .[,3])}, SNPS_fix))
 
-gwas_snps_no_rsID_fix_done <- gwas_snps_no_rsID_fix %>%
-    filter(str_detect(SNPS_fix, "^chr[0-9XY]+:\\d+$")) %>%
-    mutate(SNPS = SNPS_fix) %>%
-    select(-SNPS_fix)
+    ## Manually inspect - anything not in "chr:pos" format will be filtered
+    # gwas_snps_no_rsID_fix %>% select(SNPS, SNPS_fix) %>% View
 
-gwas_snps_final <- bind_rows(gwas_snps_rsID,
-                             gwas_snps_no_rsID_fix_done)
+    gwas_snps_no_rsID_fix_done <- gwas_snps_no_rsID_fix %>%
+        filter(str_detect(SNPS_fix, "^chr[0-9XY]+:\\d+$")) %>%
+        mutate(SNPS = SNPS_fix) %>%
+        select(-SNPS_fix)
+
+    gwas_snps_final <- bind_rows(gwas_snps_rsID,
+                                 gwas_snps_no_rsID_fix_done)
+} else {
+    gwas_snps_final <- gwas_snps_rsID
+}
 
 
 ## Make sure all SNPS are in either rsID or chr:pos format
