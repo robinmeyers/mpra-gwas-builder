@@ -5,7 +5,7 @@ sink(log, type = "output")
 
 library(tidyverse)
 
-disease_list <-  read_csv(snakemake@config$disease_list)
+disease_list <-  read_tsv(snakemake@config$disease_list)
 
 gwas_catalog <- read_tsv(snakemake@config$gwas_catalog)
 

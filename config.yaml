@@ -3,7 +3,7 @@ study: skin_disease
 
 gwas_catalog: assets/gwas_catalog_v1.0-associations_e100_r2021-04-20.tsv
 
-disease_list: skin_disease_list.csv
+disease_list: skin_disease_list.tsv
 
 extra_gwas: skin_disease_SNPS_other_papers.txt
 

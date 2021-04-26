@@ -16,5 +16,5 @@
 !rules
 !rules/*
 !config.yaml
-!disease_list.csv
+!disease_list.tsv
 !.Renviron
