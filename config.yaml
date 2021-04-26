@@ -1,7 +1,7 @@
 # name of disease/trait. used as prefix for output files.
 study: skin_disease
 
-gwas_catalog: assets/gwas_catalog_v1.0-associations_e98_r2020-01-27.tsv
+gwas_catalog: assets/gwas_catalog_v1.0-associations_e100_r2021-04-20.tsv
 
 disease_list: skin_disease_list.csv
 

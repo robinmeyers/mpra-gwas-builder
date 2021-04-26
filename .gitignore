@@ -3,6 +3,8 @@
 !Snakefile
 !scripts
 !scripts/*
+!assets
+!assets/*
 !lib
 !lib/*
 !schemas
