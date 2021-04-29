@@ -17,7 +17,8 @@ if (snakemake@config$extra_gwas != "") {
 
 
 gwas_index_snps <- gwas_catalog %>%
-    filter(`DISEASE/TRAIT` %in% disease_list$GWAS_term) %>%
+    filter(`DISEASE/TRAIT` %in% disease_list$GWAS_term,
+           `P-VALUE` <= snakemake@config$gwas_pvalue_threshold) %>%
     filter(str_detect(SNPS, "rs\\d+ x rs\\d+", negate = T)) %>%
     bind_rows(extra_gwas) %>%
     left_join(disease_list, by = c("DISEASE/TRAIT" = "GWAS_term"))

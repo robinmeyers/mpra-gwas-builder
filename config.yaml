@@ -7,6 +7,8 @@ disease_list: skin_disease_list.tsv
 
 extra_gwas: skin_disease_SNPS_other_papers.txt
 
+gwas_pvalue_threshold: 5e-8
+
 retry_errors: false
 
 seed: 1234
