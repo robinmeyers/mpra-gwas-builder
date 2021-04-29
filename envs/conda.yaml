@@ -7,8 +7,9 @@ dependencies:
   - r-base
   - r-tidyverse
   - r-magrittr
-  - r-LDlinkR
+  - r-ldlinkr
   - bioconductor-plyranges
-  - bioconductor-SNPlocs.Hsapiens.dbSNP144.GRCh37
-  - bioconductor-SNPlocs.Hsapiens.dbSNP151.GRCh38
-  - bioconductor-XtraSNPlocs.Hsapiens.dbSNP141.GRCh38
+  - bioconductor-snplocs.hsapiens.dbsnp144.grch37
+  - bioconductor-snplocs.hsapiens.dbsnp151.grch38
+  - bioconductor-xtrasnplocs.hsapiens.dbsnp141.grch38
+
