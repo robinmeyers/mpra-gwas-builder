@@ -7,6 +7,7 @@ sink(log, type = "message")
 sink(log, type = "output")
 
 if (! "haploR" %in% rownames(installed.packages())) {
+    options(repos = list(CRAN="http://cran.rstudio.com/"))
     install.packages("haploR")
 }
 
