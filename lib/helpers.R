@@ -72,7 +72,7 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
     out_file <- file.path(out_dir, paste0(pop, "_haploreg.tsv"))
     
     if (file.exists(out_file) && !force) {
-        haploreg_results <- read_tsv(out_file, col_types = cols())
+        haploreg_results <- read_tsv(out_file, col_types = cols(chr = col_character()))
         return(haploreg_results)
     }
 
