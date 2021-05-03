@@ -81,9 +81,9 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
 
     haploreg_results <-
         map_dfr(snps_chunked, 
-            ~ queryHaploreg(., ldPop = pop, ldThresh = r2,  timeout = 1000000)) %>%
-        mutate(Population = pop,
-               chr = as.character(chr))
+            ~ queryHaploreg(., ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
+                mutate(Population = pop,
+                       chr = as.character(chr)))
     write_tsv(haploreg_results, out_file)
     return(haploreg_results)
 }
