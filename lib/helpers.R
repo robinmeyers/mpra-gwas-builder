@@ -60,7 +60,8 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
 
     filtered_results <- raw_results %>%
         filter(R2 >= r2) %>%
-        mutate(RegulomeDB = as.character(RegulomeDB))
+        mutate(RS_Number = as.character(RS_Number),
+               RegulomeDB = as.character(RegulomeDB))
 
     write_tsv(filtered_results, out_file)
     return(filtered_results)
