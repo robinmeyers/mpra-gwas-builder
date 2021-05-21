@@ -16,8 +16,22 @@ snps_epigenome <- read_tsv(snakemake@input$epigenome)
 
 
 
+if ("epigenome_csv" %in% names(snakemake@config) && file.exists(snakemake@config$epigenome_csv)) {
+
+    epigenome_csv <- read_csv(snakemake@config$epigenome_csv)
+    epigenome_filter_keys <- epigenome_csv %>%
+    	filter(filter) %>% pull(name)
+
+} else {
+
+    epigenome_keys <- names(snakemake@config$epigenome)
+    epigenome_filter_keys <- epigenome_keys[map(snakemake@config$epigenome, ~ .$filter)]
+}
+
+print(epigenome_filter_keys)
+
 ld_snps_filter <- snps_epigenome %>%
-    filter(str_detect(Epigenome, "(ATAC|H3K27ac|H3K4me1)")) %>%  # |
+    filter(map_lgl(str_split(Epigenome, "\\|"), ~ any(. %in% epigenome_filter_keys))) %>%  # |
                # (Epigenome == "H3K27me3" & !is.na(eQTL))) %>%
     arrange(chr, pos)
 

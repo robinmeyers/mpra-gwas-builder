@@ -8,7 +8,9 @@ dependencies:
   - r-tidyverse
   - r-magrittr
   - r-ldlinkr
+  - bioconductor-rtracklayer
   - bioconductor-plyranges
+  - bioconductor-bsgenome.hsapiens.ncbi.grch38
   - bioconductor-snplocs.hsapiens.dbsnp144.grch37
   - bioconductor-snplocs.hsapiens.dbsnp151.grch38
   - bioconductor-xtrasnplocs.hsapiens.dbsnp141.grch38

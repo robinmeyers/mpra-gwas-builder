@@ -16,8 +16,9 @@ sink(log, type = "output")
 # library(ProjectTemplate)
 # load.project()
 
-str(snakemake@config$epigenome)
+# str(snakemake@config$epigenome)
 
+library(rtracklayer)
 library(plyranges)
 library(tidyverse)
 
@@ -29,16 +30,31 @@ ld_snps <- read_tsv(snakemake@input$ld_snps)
 
 hg19_to_hg38_chain <- import.chain("assets/hg19ToHg38.over.chain")
 
+if ("epigenome_csv" %in% names(snakemake@config) && file.exists(snakemake@config$epigenome_csv)) {
+
+    epigenome_csv <- read_csv(snakemake@config$epigenome_csv)
+    epigenome_keys <- epigenome_csv$name
+    epigenome_bed <- map2(epigenome_csv$bedfile, epigenome_csv$genome, function(bedfile, genome) {
+        bed <- read_bed(bedfile)
+        if (genome == "hg19") {
+            bed <- liftOver(bed, hg19_to_hg38_chain) %>% unlist
+        }
+        return(bed)
+        }) %>% set_names(epigenome_keys)
+
+} else {
+
+    epigenome_keys <- names(snakemake@config$epigenome)
+    epigenome_bed <- map(snakemake@config$epigenome, function(epigenome) {
+        bed <- read_bed(epigenome$bedfile)
+        if (epigenome$genome == "hg19") {
+            bed <- liftOver(bed, hg19_to_hg38_chain) %>% unlist
+        }
+        return(bed)
+        })
+}
 
 
-epigenome_keys <- names(snakemake@config$epigenome)
-epigenome_bed <- map(snakemake@config$epigenome, function(epigenome) {
-    bed <- read_bed(epigenome$bedfile)
-    if (epigenome$genome == "hg19") {
-        bed <- liftOver(bed, hg19_to_hg38_chain) %>% unlist
-    }
-    return(bed)
-    })
 
 
 ld_snps_gr <- ld_snps %>%

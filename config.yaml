@@ -13,23 +13,25 @@ retry_errors: false
 
 seed: 1234
 
-epigenome:
-  - ATAC:
-      bedfile: data/ggr.atac.idr.master.bed.gz
-      genome: hg19
-      filter: true
-  - H3K27ac:
-      bedfile: data/ggr.histone.H3K27ac.overlap.master.bed.gz
-      genome: hg19
-      filter: true
-  - H3K27me3:
-      bedfile: data/ggr.histone.H3K27me3.overlap.master.bed.gz
-      genome: hg19
-      filter: false
-  - H3K4me1:
-      bedfile: data/ggr.histone.H3K4me1.overlap.master.bed.gz
-      genome: hg19
-      filter: true
+epigenome_csv: epigenome.csv
+
+# epigenome:
+#   - ATAC:
+#       bedfile: data/ggr.atac.idr.master.bed.gz
+#       genome: hg19
+#       filter: true
+#   - H3K27ac:
+#       bedfile: data/ggr.histone.H3K27ac.overlap.master.bed.gz
+#       genome: hg19
+#       filter: true
+#   - H3K27me3:
+#       bedfile: data/ggr.histone.H3K27me3.overlap.master.bed.gz
+#       genome: hg19
+#       filter: false
+#   - H3K4me1:
+#       bedfile: data/ggr.histone.H3K4me1.overlap.master.bed.gz
+#       genome: hg19
+#       filter: true
 
 
 eqtls:
