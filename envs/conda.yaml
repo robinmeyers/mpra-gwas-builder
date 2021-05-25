@@ -7,6 +7,7 @@ dependencies:
   - r-base
   - r-tidyverse
   - r-magrittr
+  - r-cowplot
   - r-ldlinkr
   - bioconductor-rtracklayer
   - bioconductor-plyranges

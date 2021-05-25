@@ -54,6 +54,7 @@ rule all:
        # "outs/" + config['study'] + "_ld_snps.tsv",
        "outs/" + config['study'] + "_ld_snps_filtered.tsv",
        "outs/" + config['study'] + "_oligo_list.csv",
+       "outs/" + config['study'] + "_lib_stats.csv",
        
        "outs/token"
     run:
@@ -106,4 +107,22 @@ rule build_library:
         random_ctrl_ref = "outs/{study}_randomcontrol_ref.csv"
     log: "logs/{study}_build_mpra_library.log"
     script: "scripts/BuildMPRALib.R"
+
+
+rule figures_and_stats:
+    input:
+        gwas_snps = "outs/{study}_gwas.tsv",
+        index_snps = "outs/{study}_index_snps.csv", 
+        ld_snps = "outs/{study}_ld_snps.tsv",
+        epigenome_snps = "outs/{study}_ld_snps_epigenome.tsv",
+        filtered_snps = "outs/{study}_ld_snps_filtered.tsv",
+        variant_ref = "outs/{study}_variant_ref.csv",
+    output:
+        stats = "outs/{study}_lib_stats.csv"
+    log: "logs/{study}_figs_stats.log"
+    script: "scripts/LibDesignFiguresTables.R"
+
+
+
+
 
