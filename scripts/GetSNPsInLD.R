@@ -125,7 +125,7 @@ dir.create(out_dir_haploreg, showWarnings = F, recursive = T)
 
 haploreg_results <- crossing(index_snp = snps_to_query_rsid, pop = haploreg_pops) %>%
     group_by(pop) %>% summarise(index_snps = list(index_snp)) %>%
-    mutate(haploreg_results = map2(index_snps, pop, query_haploreg, out_dir = out_dir_haploreg, r2 = r2_threshold))
+    mutate(haploreg_results = map2(index_snps, pop, query_haploreg, force = T, out_dir = out_dir_haploreg, r2 = r2_threshold))
 
 haploreg_results_table <- haploreg_results %>% select(haploreg_results) %>%
     unnest(haploreg_results) %>%
