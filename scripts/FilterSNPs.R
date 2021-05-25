@@ -31,7 +31,7 @@ if ("epigenome_csv" %in% names(snakemake@config) && file.exists(snakemake@config
 print(epigenome_filter_keys)
 
 ld_snps_filter <- snps_epigenome %>%
-    filter(map_lgl(str_split(Epigenome, "\\|"), ~ any(. %in% epigenome_filter_keys))) %>%  # |
+    filter(map_lgl(str_split(Epigenome, ";"), ~ any(. %in% epigenome_filter_keys))) %>%  # |
                # (Epigenome == "H3K27me3" & !is.na(eQTL))) %>%
     arrange(chr, pos)
 
