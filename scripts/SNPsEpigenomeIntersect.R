@@ -72,14 +72,19 @@ epigenome_ranges <- map(epigenome_bed,
 mcols(ld_snps_gr) <- cbind(mcols(ld_snps_gr),
     map2_dfc(epigenome_ranges, epigenome_bed, ~ .x[findOverlaps(ld_snps_gr, .y, maxgap = 0, select = "first")]))
 
+if (!is.null(snakemake@config$eqtls)) {
+    eqtls <- 
+        map_dfr(snakemake@config$eqtls,
+            ~ read_tsv(.$file), .id = "tissue")
 
-eqtls <- 
-    map_dfr(snakemake@config$eqtls,
-        ~ read_tsv(.$file), .id = "tissue")
+    eqtls <- eqtls %>%
+        extract(variant_id, c("chr", "pos"), "^(chr[0-9XY]+)_(\\d+)", remove = F) %>%
+        mutate(pos = as.integer(pos))
+} else {
+    eqtls <- tibble(chr = character(), pos = integer(), variant_id = character())
+}
 
-eqtls <- eqtls %>%
-    extract(variant_id, c("chr", "pos"), "^(chr[0-9XY]+)_(\\d+)", remove = F) %>%
-    mutate(pos = as.integer(pos))
+
 
 
 ld_snps_epigenome <- ld_snps_gr %>%
