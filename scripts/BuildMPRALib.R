@@ -32,17 +32,23 @@ window_flank <- floor((final_frag_len - 1) / 2)
 
 snps <- read_tsv(snakemake@input$filtered_snps)
 
-
 snps_cleaned <- snps %>%
     filter(!is.na(ref), !is.na(alt),
            abs(str_count(ref, "[ACGT]") - str_count(alt, "[ACGT]")) <= max_indel_size) %>%
-    mutate(alt = str_extract(alt, "^[ACGT-]+"), # only use first alternate allele if multiple listed
-           is_indel = str_count(ref, "[ACGT]") != str_count(alt, "[ACGT]"),  # annotate indels
+    # mutate(alt = str_extract(alt, "^[ACGT-]+"), # only use first alternate allele if multiple listed
+    mutate(alt = str_split(alt, ",")) %>%
+    unnest(alt) %>%
+    mutate(is_indel = str_count(ref, "[ACGT]") != str_count(alt, "[ACGT]"),  # annotate indels
            is_indel_fixed_base = is_indel & !str_detect(ref, "-") & !str_detect(alt, "-"), # annotate indels with the preceding fixed base
            ref = ifelse(is_indel_fixed_base, str_sub(ref, 2), str_replace(ref, "-", "")), # remove fixed first base or the "-" annotation for indels
            alt = ifelse(is_indel_fixed_base, str_sub(alt, 2), str_replace(alt, "-", ""))) %>%
     mutate(pos = ifelse(is_indel, as.numeric(pos) + 1, as.numeric(pos))) %>%
-    distinct(chr, pos, ref, alt, .keep_all = T) %>%
+    distinct(snp, chr, pos, ref, alt, .keep_all = T) %>%
+    group_by(snp, chr, pos, ref) %>%
+    mutate(alt_n = as.integer(table(alt)[alt])) %>%
+    slice_max(alt_n, n = 1, with_ties = F) %>%
+    ungroup() %>%
+    select(-alt_n) %>%
     arrange(chr, pos, snp) %>%
     mutate(fragment = row_number()) # account for removing fixed base
 
