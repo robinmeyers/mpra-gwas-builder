@@ -112,13 +112,14 @@ filtered_snps %>% distinct(index_snp, snp) %>%
     ggsave(file.path(fig_dir, "filtered_snps_per_index_snp.pdf"))
 
 
-
-epigenome_snps_raw %>%
+epigenome_snps <- epigenome_snps_raw %>%
     select(snp, Epigenome) %>%
     mutate(Epigenome = str_split(Epigenome, ";")) %>%
     unnest(Epigenome) %>%
     filter(!is.na(Epigenome)) %>%
-    distinct() %>%
+    distinct()
+
+epigenome_snps %>%
     ggplot(aes(x = fct_rev(Epigenome))) +
     geom_bar() +
     coord_flip() +
@@ -127,6 +128,20 @@ epigenome_snps_raw %>%
     ggsave(file.path(fig_dir, "filtered_snps_per_peakset.pdf"))
 
 
+peak_stats <- read_csv(snakemake@input$peak_stats)
+epigenome_stats <- epigenome_snps %>%
+    count(Disease, Epigenome) %>%
+    left_join(peak_stats, by = c("Epigenome" = "peakset")) %>%
+    mutate(snps_per_peak = n / peak_num,
+           snps_per_mb = n / peak_width * 1e6)
+
+epigenome_stats %>%
+    ggplot(aes(x = fct_rev(Epigenome), y = snps_per_mb)) +
+    geom_col() +
+    coord_flip() +
+    labs(x = "Peak set", y = "SNPs per Mb") +
+    theme_cowplot() +
+    ggsave(file.path(fig_dir, "filtered_snps_per_peakset_mb.pdf"))
 
 final_snps <- filtered_snps %>%
     select(Disease, index_snp, snp) %>%

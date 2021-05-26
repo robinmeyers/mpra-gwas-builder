@@ -100,3 +100,13 @@ ld_snps_epigenome <- ld_snps_gr %>%
 write_tsv(ld_snps_epigenome, snakemake@output$epigenome)
 
 
+peak_stats <- tibble(peakset = epigenome_keys, bed = epigenome_bed) %>%
+    mutate(peak_num = map_int(epigenome_bed, length),
+           peak_width = map_int(epigenome_bed, ~ sum(width(.)))) %>%
+    select(-bed)
+
+write_csv(peak_stats, snakemake@output$peak_stats)
+
+
+
+

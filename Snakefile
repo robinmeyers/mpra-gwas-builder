@@ -85,7 +85,8 @@ rule intersect_epigenome:
     input:
         ld_snps = "outs/{study}_ld_snps.tsv"
     output:
-        epigenome = "outs/{study}_ld_snps_epigenome.tsv"
+        epigenome = "outs/{study}_ld_snps_epigenome.tsv",
+        peak_stats = "outs/{study}_epigenome_peak_stats.csv"
     log: "logs/{study}_epigenome.log"
     script: "scripts/SNPsEpigenomeIntersect.R"
 
@@ -115,8 +116,9 @@ rule figures_and_stats:
         index_snps = "outs/{study}_index_snps.csv", 
         ld_snps = "outs/{study}_ld_snps.tsv",
         epigenome_snps = "outs/{study}_ld_snps_epigenome.tsv",
+        peak_stats = "outs/{study}_epigenome_peak_stats.csv",
         filtered_snps = "outs/{study}_ld_snps_filtered.tsv",
-        variant_ref = "outs/{study}_variant_ref.csv",
+        variant_ref = "outs/{study}_variant_ref.csv"
     output:
         stats = "outs/{study}_lib_stats.csv"
     log: "logs/{study}_figs_stats.log"
