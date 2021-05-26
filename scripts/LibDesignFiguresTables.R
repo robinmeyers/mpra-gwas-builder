@@ -130,7 +130,7 @@ epigenome_snps %>%
 
 peak_stats <- read_csv(snakemake@input$peak_stats)
 epigenome_stats <- epigenome_snps %>%
-    count(Disease, Epigenome) %>%
+    count(Epigenome) %>%
     left_join(peak_stats, by = c("Epigenome" = "peakset")) %>%
     mutate(snps_per_peak = n / peak_num,
            snps_per_mb = n / peak_width * 1e6)
