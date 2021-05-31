@@ -25,7 +25,7 @@ if ("epigenome_csv" %in% names(snakemake@config) && file.exists(snakemake@config
 } else {
 
     epigenome_keys <- names(snakemake@config$epigenome)
-    epigenome_filter_keys <- epigenome_keys[map(snakemake@config$epigenome, ~ .$filter)]
+    epigenome_filter_keys <- epigenome_keys[map_lgl(snakemake@config$epigenome, ~ .$filter)]
 }
 
 print(epigenome_filter_keys)
