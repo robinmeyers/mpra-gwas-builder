@@ -1,3 +1,5 @@
+save.image("logs/build_library.RData")
+
 log <- file(snakemake@log[[1]], open="wt")
 sink(log, type = "message")
 sink(log, type = "output")
@@ -18,15 +20,22 @@ max_oligo_length <- snakemake@config$oligo$max_len
 re_seqs <- DNAStringSet(unlist(snakemake@config$restriction_enzymes))
 
 primer_5p <- snakemake@config$oligo$primer_5p
-cloning_site <- snakemake@config$oligo$cloning_site
 primer_3p <- snakemake@config$oligo$primer_3p
+
+cloning_site_1 <- re_seqs[snakemake@config$cloning_site$enzyme1]
+cloning_site_2 <- re_seqs[snakemake@config$cloning_site$enzyme2]
+
+stuffer_bp <- snakemake@config$cloning_site$stuffer_bp
+stuffer_gc <- snakemake@config$cloning_site$stuffer_GC
+
+cloning_site_length <- str_length(cloning_site_1) + stuffer_bp + str_length(cloning_site_2)
 
 bc_length <- snakemake@config$oligo$bc_len
 
 max_indel_size <- snakemake@config$oligo$max_indel
 wiggle_room <- max_indel_size + 1
 
-final_frag_len <- max_oligo_length - str_length(primer_5p) - str_length(cloning_site) - str_length(primer_3p) - bc_length - wiggle_room
+final_frag_len <- max_oligo_length - str_length(primer_5p) - cloning_site_length - str_length(primer_3p) - bc_length - wiggle_room
 
 window_flank <- floor((final_frag_len - 1) / 2)
 
@@ -183,7 +192,7 @@ combined_fragments <- bind_rows(
 ) %>%
     mutate(var_seq_flanks  = paste0(str_sub(primer_5p, -flank_width),
                                     var_seq,
-                                    str_sub(cloning_site, 1, flank_width)))
+                                    str_sub(cloning_site_1, 1, flank_width)))
 
 
 
@@ -220,7 +229,7 @@ combined_fragments_corrected <- re_matches %>% # filter(Fragment == 340) %>%
 tmp <- combined_fragments_corrected %>% filter(!fail) %>%
     mutate(var_seq_corrected_flanks  = paste0(str_sub(primer_5p, - flank_width),
                                               var_seq_corrected,
-                                              str_sub(cloning_site, 1, flank_width))) %>%
+                                              str_sub(cloning_site_1, 1, flank_width))) %>%
     ungroup %>%
     mutate(re_matches = map(var_seq_corrected_flanks, function(x) {
         map_dfr(names(re_seqs), function(re_name) {
@@ -264,7 +273,7 @@ random_controls_allele <- random_controls %>% mutate(allele = map2(ref, alt, ~ c
     mutate(variant = ifelse(allele == ref, "ref", "alt")) %>%
     mutate(var_seq_flanks  = paste0(str_sub(primer_5p, - flank_width),
                                     var_seq,
-                                    str_sub(cloning_site, 1, flank_width))) %>%
+                                    str_sub(cloning_site_1, 1, flank_width))) %>%
     ungroup %>%
     mutate(re_matches = map_lgl(var_seq_flanks, function(x) {
         map_dfr(names(re_seqs), function(re_name) {
@@ -287,7 +296,7 @@ barcodes_per_frag <- 10
 
 barcode_df <- read_tsv(snakemake@config$barcodes, col_names = F) %>%
     set_colnames("barcode") %>%
-    mutate(barcode_w_flanks = paste0(str_sub(cloning_site, start = -flank_width),
+    mutate(barcode_w_flanks = paste0(str_sub(cloning_site_2, start = -flank_width),
                                      barcode,
                                      str_sub(primer_3p, start = 1, end = flank_width))) %>%
     bind_cols(map_dfc(as.list(re_seqs), vcountPattern, subject = .$barcode_w_flanks)) %>%
@@ -300,18 +309,59 @@ barcode_lib <- barcode_df %>%
     split(rep(1:total_frags, each = 10)) %>%
     map(sort)
 
-final_library <- bind_rows(fragments_final %>% select(frag_id, frag_seq = var_seq_corrected),
+
+
+
+barcoded_library <- bind_rows(fragments_final %>% select(frag_id, frag_seq = var_seq_corrected),
           random_controls_allele %>% select(frag_id, frag_seq = var_seq)) %>%
     mutate(barcode = barcode_lib) %>%
     unnest(barcode) %>%
     group_by(frag_id) %>%
     mutate(barcode_id = row_number()) %>%
-    ungroup %>%
+    ungroup
+
+if (stuffer_bp > 0) {
+    gc_bp <- round(stuffer_gc * stuffer_bp)
+    at_bp <- stuffer_bp - gc_bp
+    stuffer_df <- tibble(
+        stuffer = map_chr(1:nrow(barcoded_library),
+        ~ paste0(sample(c(sample(c("G", "C"), gc_bp, replace = T),
+                            sample(c("A", "T"), at_bp, replace = T)), replace = F), collapse = ""))) %>%
+        mutate(stuffer_w_flanks = paste0(str_sub(cloning_site_1, start = 2),
+                                     stuffer,
+                                     str_sub(cloning_site_2, end = -2)))  %>%
+        bind_cols(map_dfc(as.list(re_seqs), vcountPattern, subject = .$stuffer_w_flanks)) %>%
+        mutate(match = purrr::reduce(select(., names(re_seqs)), `+`))
+
+
+    while(any(stuffer_df$match > 0)) {
+        stuffer_df_match <- stuffer_df %>% filter(match > 0)
+
+        stuffer_df_match <- tibble(
+            stuffer = map_chr(1:nrow(stuffer_df_match),
+                              ~ paste0(sample(c(sample(c("G", "C"), gc_bp, replace = T),
+                                                sample(c("A", "T"), at_bp, replace = T)), replace = F), collapse = ""))) %>%
+            mutate(stuffer_w_flanks = paste0(str_sub(cloning_site_1, start = 2),
+                                             stuffer,
+                                             str_sub(cloning_site_2, end = -2)))  %>%
+            bind_cols(map_dfc(as.list(re_seqs), vcountPattern, subject = .$stuffer_w_flanks)) %>%
+            mutate(match = purrr::reduce(select(., names(re_seqs)), `+`))
+
+        stuffer_df <- bind_rows(stuffer_df %>% filter(match == 0),
+                                stuffer_df_match)
+    }
+
+    stuffer_seqs <- stuffer_df$stuffer
+
+} else {
+    stuffer_seqs <- ""
+}
+
+
+final_library <- barcoded_library %>%
+    mutate(stuffer = stuffer_seqs) %>%
     mutate(oligo_id = paste0(frag_id, "_barcode-", str_pad(barcode_id, width = 2, pad = 0)),
-           oligo = paste0(primer_5p, frag_seq, cloning_site, barcode, primer_3p))
-
-
-
+           oligo = paste0(primer_5p, frag_seq, cloning_site_1, stuffer, cloning_site_2, barcode, primer_3p))
 
 
 final_library %>% select(oligo_id, oligo) %>%

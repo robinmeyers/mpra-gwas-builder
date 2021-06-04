@@ -34,6 +34,16 @@ epigenome_csv: epigenome.csv
 #       filter: true
 
 
+# uncomment to filter out
+tx_filters:
+#  - coding
+#  - spliceSite
+#  - fiveUTR
+#  - threeUTR
+#  - intron
+#  - promoter
+#  - intergenic
+
 eqtls:
   - skin_not_sun_exposed:
       file: data/Skin_Not_Sun_Exposed_Suprapubic.v8.signif_variant_gene_pairs.txt.gz
@@ -49,13 +59,19 @@ oligo:
   max_len: 230
   primer_5p: ACTGGCCGCTTCACTG
   primer_3p: AGATCGGAAGAGCGTCG
-  cloning_site: CTCGAGGCTAGC
+  # cloning_site: CTCGAGGCTAGC
   bc_len: 16
   max_indel: 3
-
 
 restriction_enzymes:
   EcoRI: GAATTC
   BamHI: GGATCC
   XhoI: CTCGAG
   NheI: GCTAGC
+
+cloning_site:
+  enzyme1: XhoI
+  enzyme2: NheI
+  stuffer_bp: 10
+  stuffer_GC: 0.5
+

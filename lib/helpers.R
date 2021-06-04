@@ -36,7 +36,7 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
         results <- read_tsv(out_file, col_types = cols())
 
         if ("RS_Number" %in% colnames(results)) {
-            results %>% 
+            results %>%
                 mutate(RegulomeDB = as.character(RegulomeDB)) %>%
                 return()
 
@@ -45,7 +45,7 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
         if (!retry_errors) {
             return(results %>% mutate(RegulomeDB = NA_character_))
         }
-            
+
     }
 
     raw_results <- LDproxy(snp = snp, pop = pop, token = Sys.getenv("LDLINK_TOKEN"))
@@ -70,7 +70,7 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
 query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size = 1000) {
     cat(pop, "\n")
     out_file <- file.path(out_dir, paste0(pop, "_haploreg.tsv"))
-    
+
     if (file.exists(out_file) && !force) {
         haploreg_results <- read_tsv(out_file, col_types = cols(chr = col_character()))
         return(haploreg_results)
@@ -80,7 +80,7 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
     snps_chunked <- split(snps, chunk_index)
 
     haploreg_results <-
-        map_dfr(snps_chunked, 
+        map_dfr(snps_chunked,
             ~ queryHaploreg(., ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
                 mutate(Population = pop,
                        chr = as.character(chr)))
@@ -224,7 +224,7 @@ mutate_restriction_sites <- function(x, frag) {
         }
         if (re_sites$r_end[re_site_i] == str_length(new_seq) & str_length(new_subseq) < str_length(re_seqs[re_sites$RE[re_site_i]])) {
             new_subseq <- str_c(new_subseq,
-                                str_sub(cloning_site, 1, str_length(re_seqs[re_sites$RE[re_site_i]]) - str_length(new_subseq)))
+                                str_sub(cloning_site_1, 1, str_length(re_seqs[re_sites$RE[re_site_i]]) - str_length(new_subseq)))
         }
 
         # check if the site still exists with the proposed subs
@@ -248,7 +248,7 @@ mutate_restriction_sites <- function(x, frag) {
                 proposed_new_seq <- str_c(str_sub(primer_5p, -(flank_width - re_pos_i + 1)), proposed_new_seq)
             }
             if (re_pos_i + flank_width > str_length(new_seq)) {
-                proposed_new_seq <- str_c(proposed_new_seq, str_sub(cloning_site, 1, flank_width + re_pos_i - str_length(new_seq)))
+                proposed_new_seq <- str_c(proposed_new_seq, str_sub(cloning_site_1, 1, flank_width + re_pos_i - str_length(new_seq)))
             }
 
             if (any(map_lgl(as.character(re_seqs), ~ str_detect(proposed_new_seq, .)))) {

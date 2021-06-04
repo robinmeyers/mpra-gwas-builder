@@ -52,7 +52,7 @@ rule all:
        # "outs/" + config['study'] + "_index_snps.tsv",
        # "outs/" + config['study'] + "_gwas.tsv",
        # "outs/" + config['study'] + "_ld_snps.tsv",
-       "outs/" + config['study'] + "_ld_snps_filtered.tsv",
+       # "outs/" + config['study'] + "_ld_snps_filtered.tsv",
        "outs/" + config['study'] + "_oligo_list.csv",
        "outs/" + config['study'] + "_lib_stats.csv",
        
