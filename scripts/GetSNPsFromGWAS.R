@@ -10,7 +10,7 @@ disease_list <-  read_tsv(snakemake@config$disease_list)
 gwas_catalog <- read_tsv(snakemake@config$gwas_catalog,
     col_types = cols(.default = col_character()), quote = "")
 
-if (snakemake@config$extra_gwas != "") {
+if (!is.null(snakemake@config$extra_gwas) && snakemake@config$extra_gwas != "") {
     extra_gwas <- read_tsv(snakemake@config$extra_gwas,
         col_types = cols(.default = col_character()), quote = "")
 } else {

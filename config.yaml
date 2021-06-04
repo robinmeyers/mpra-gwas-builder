@@ -1,20 +1,30 @@
 # name of disease/trait. used as prefix for output files.
 study: skin_disease
 
+# File downloaded from GWAS catalog
 gwas_catalog: assets/gwas_catalog_v1.0-associations_e100_r2021-04-20.tsv
 
+# Disease column with (optionally simplified) disease terms
+# GWAS_term column with terms that must exactly match DISEASE/TRAIT column in catalog
 disease_list: skin_disease_list.tsv
 
+# manually include snps not in catalog
 extra_gwas: skin_disease_SNPS_other_papers.txt
 
+# Only include GWAS SNPs with p-value below this threshold
 gwas_pvalue_threshold: 5e-8
 
+# LDLink queries are  cached.
+# When the pipeline is re-run, do you want to retry SNPs that produced an error?
+# This will cause the pipeline to re-run slower. 
 retry_errors: false
 
+# random number seed
 seed: 1234
 
+# Specify genomic regions to label and filter SNPs either in csv format
 epigenome_csv: epigenome.csv
-
+# or YAML format below
 # epigenome:
 #   - ATAC:
 #       bedfile: data/ggr.atac.idr.master.bed.gz
@@ -34,9 +44,9 @@ epigenome_csv: epigenome.csv
 #       filter: true
 
 
-# uncomment to filter out
+# uncomment to filter out variants falling in gene annotations
 txdb_filters:
- - coding
+  - coding
 #  - spliceSite
 #  - fiveUTR
 #  - threeUTR
@@ -44,6 +54,8 @@ txdb_filters:
 #  - promoter
 #  - intergenic
 
+
+# this will label eQTLs, but filtering not yet implemented
 eqtls:
   - skin_not_sun_exposed:
       file: data/Skin_Not_Sun_Exposed_Suprapubic.v8.signif_variant_gene_pairs.txt.gz
@@ -55,16 +67,19 @@ eqtls:
 
 barcodes: assets/barcodes16-1.txt
 
+# how many scramble control pairs
 random_controls: 250
 
+# Options for building the oligos
 oligo:
   max_len: 230
   primer_5p: ACTGGCCGCTTCACTG
   primer_3p: AGATCGGAAGAGCGTCG
-  # cloning_site: CTCGAGGCTAGC
   bc_len: 16
-  max_indel: 3
+  max_indel: 3 # will not include indel variants with more than this number of bp
 
+# List all enzymes used in cloning.
+# These sites will be randomly mutated if they exist in the genomic sequence
 restriction_enzymes:
   EcoRI: GAATTC
   BamHI: GGATCC
@@ -74,6 +89,6 @@ restriction_enzymes:
 cloning_site:
   enzyme1: XhoI
   enzyme2: NheI
-  stuffer_bp: 10
-  stuffer_GC: 0.5
+  stuffer_bp: 10 # length of stuffer between sites
+  stuffer_GC: 0.5 # GC content of stuffer
 

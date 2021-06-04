@@ -17,4 +17,5 @@
 !rules/*
 !config.yaml
 !disease_list.tsv
+!SNPS_other_papers.txt
 !.Renviron
