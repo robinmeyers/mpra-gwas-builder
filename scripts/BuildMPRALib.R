@@ -33,6 +33,9 @@ cloning_site_length <- str_length(cloning_site_1) + stuffer_bp + str_length(clon
 bc_length <- snakemake@config$oligo$bc_len
 
 max_indel_size <- snakemake@config$oligo$max_indel
+
+random_control_n <- snakemake@config$random_controls
+
 wiggle_room <- max_indel_size + 1
 
 final_frag_len <- max_oligo_length - str_length(primer_5p) - cloning_site_length - str_length(primer_3p) - bc_length - wiggle_room
@@ -252,10 +255,10 @@ fragments_final <- combined_fragments_corrected %>% ungroup() %>%
 
 
 
-random_control_n <- 250
+
 random_controls <- fragments_final %>% filter(!is.na(variant)) %>%
     distinct(seq) %>%
-    sample_n(random_control_n*2) %>%
+    sample_n(random_control_n*2, replace = random_control_n*2 > nrow(.)) %>%
     mutate(fragment_initial = row_number(),
            GC = str_count(seq, "[GC]")/str_length(seq),
            shuffle_seq = map_chr(seq, ~ str_split(., "") %>% unlist %>% sample() %>% str_c(collapse = "")),

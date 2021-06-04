@@ -11,8 +11,10 @@ dependencies:
   - r-ldlinkr
   - bioconductor-rtracklayer
   - bioconductor-plyranges
+  - bioconductor-variantannotation
   - bioconductor-bsgenome.hsapiens.ncbi.grch38
   - bioconductor-snplocs.hsapiens.dbsnp144.grch37
   - bioconductor-snplocs.hsapiens.dbsnp151.grch38
   - bioconductor-xtrasnplocs.hsapiens.dbsnp141.grch38
+  - bioconductor-txdb.hsapiens.ucsc.hg38.knowngene
 

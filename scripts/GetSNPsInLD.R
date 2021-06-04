@@ -2,6 +2,8 @@
 
 readRenviron(".Renviron")
 
+save.image("logs/get_snps_in_ld.RData")
+
 log <- file(snakemake@log[[1]], open="wt")
 sink(log, type = "message")
 sink(log, type = "output")
@@ -14,8 +16,10 @@ if (! "haploR" %in% rownames(installed.packages())) {
 library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 library(SNPlocs.Hsapiens.dbSNP151.GRCh38)
 library(XtraSNPlocs.Hsapiens.dbSNP141.GRCh38)
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 library(LDlinkR)
 library(haploR)
+library(VariantAnnotation)
 library(tidyverse)
 
 source("lib/helpers.R")
@@ -217,4 +221,27 @@ ld_snps_b38 <- bind_rows(
 )
 
 
-write_tsv(ld_snps_b38, snakemake@output$ld_snps)
+
+## Get TxDb annotations
+
+ld_snps_b38_gr <- ld_snps_b38 %>%
+    extract(coord_b38, c("seqnames", "start"), "(.+):(\\d+)") %>%
+    filter(!is.na(seqnames), !is.na(start)) %>%
+    mutate(end = start) %>%
+    select(seqnames, start, end, snp) %>%
+    makeGRangesFromDataFrame(keep.extra.columns = T)
+
+ld_snps_txdb_loc <- locateVariants(ld_snps_b38_gr, TxDb.Hsapiens.UCSC.hg38.knownGene, AllVariants())
+
+ld_snps_txdb_loc_df <- as_tibble(ld_snps_txdb_loc) %>%
+    transmute(coord_b38 = paste0(seqnames, ":", start),
+              txdb_annot = LOCATION) %>%
+    distinct() %>%
+    group_by(coord_b38) %>%
+    summarise(txdb_annot = paste0(txdb_annot, collapse = ";"))
+
+ld_snps_b38_annot <- left_join(ld_snps_b38,
+                               ld_snps_txdb_loc_df, by = "coord_b38")
+
+
+write_tsv(ld_snps_b38_annot, snakemake@output$ld_snps)

@@ -35,8 +35,8 @@ epigenome_csv: epigenome.csv
 
 
 # uncomment to filter out
-tx_filters:
-#  - coding
+txdb_filters:
+ - coding
 #  - spliceSite
 #  - fiveUTR
 #  - threeUTR
@@ -54,6 +54,8 @@ eqtls:
 
 
 barcodes: assets/barcodes16-1.txt
+
+random_controls: 250
 
 oligo:
   max_len: 230
