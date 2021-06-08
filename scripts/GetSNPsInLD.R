@@ -176,12 +176,11 @@ haploreg_snps_no_coord <- haploreg_snps %>%
 ## Try to rescue location data from SNPlocs packages and GTEx variant info
 
 haploreg_snps_find_locs_b38 <- snpsById(SNPlocs.Hsapiens.dbSNP151.GRCh38, haploreg_snps_no_coord, ifnotfound = "drop") %>%
-    GRanges() %>% `seqlevelsStyle<-`("NCBI") %>% as_tibble() %>%
-    mutate(chr = as.character(seqnames)) %>%
-    select(chr, pos_b38 = start, snp = RefSNP_id)
+    GRanges() %>% as_tibble() %>%
+    mutate(chr = str_replace(as.character(seqnames), "^(chr|ch)", "")) %>%    select(chr, pos_b38 = start, snp = RefSNP_id)
 haploreg_snps_find_locs_b38_xtra <- snpsById(XtraSNPlocs.Hsapiens.dbSNP141.GRCh38, haploreg_snps_no_coord, ifnotfound = "drop") %>%
-    GRanges() %>% `seqlevelsStyle<-`("NCBI") %>% as_tibble() %>%
-    mutate(chr = as.character(seqnames)) %>%
+    GRanges() %>% as_tibble() %>%
+    mutate(chr = str_replace(as.character(seqnames), "^(chr|ch)", "")) %>%
     select(chr, pos_b38 = start, snp = RefSNP_id)
 
 
