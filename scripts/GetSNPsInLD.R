@@ -208,19 +208,20 @@ if (!is.null(snakemake@config$gwas_pop_key)) {
     index_snps_pop_match <- tibble(index_snp = c(), pop = c())
 }
 
-
+max_pops <- snakemake@config$max_pops
 
 index_snps_pop_all <- crossing(index_snp = index_snps_cleaned$index_snp,
                                pop = pops) %>%
     bind_rows(index_snps_pop_match %>%
+                  group_by(index_snp) %>%
+                  filter(n_distinct(pop, na.rm=T) <= max_pops) %>%
+                  ungroup() %>%
                   distinct(index_snp, pop))
 
 
 snps_to_query <- index_snps_pop_all %>%
     filter(str_detect(index_snp, "rs\\d+"),
-           !is.na(pop)) %>%
-    arrange(pop,index_snp)
-
+           !is.na(pop))
 
 out_dir <- "outs/SNPS_LDlink"
 

@@ -17,6 +17,7 @@ gwas_pvalue_threshold: 5e-8
 # Key to associate gwas samples with 1KGP populations
 # Comment out to not match and only use populations listed below
 gwas_pop_key: assets/gwas_populations_keys.txt
+max_pops: 5
 
 # Populations to run regardless of gwas sample
 pops:
