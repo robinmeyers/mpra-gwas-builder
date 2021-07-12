@@ -14,6 +14,19 @@ extra_gwas: skin_disease_SNPS_other_papers.txt
 # Only include GWAS SNPs with p-value below this threshold
 gwas_pvalue_threshold: 5e-8
 
+# Key to associate gwas samples with 1KGP populations
+# Comment out to not match and only use populations listed below
+gwas_pop_key: assets/gwas_populations_keys.txt
+
+# Populations to run regardless of gwas sample
+pops:
+  - ALL
+  # - AFR
+  # - AMR
+  # - EAS
+  # - EUR
+  # - SAS
+
 # LDLink queries are  cached.
 # When the pipeline is re-run, do you want to retry SNPs that produced an error?
 # This will cause the pipeline to re-run slower. 

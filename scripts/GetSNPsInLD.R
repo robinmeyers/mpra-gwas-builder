@@ -20,6 +20,7 @@ library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 library(LDlinkR)
 library(haploR)
 library(VariantAnnotation)
+library(magrittr)
 library(tidyverse)
 
 source("lib/helpers.R")
@@ -47,7 +48,8 @@ all(str_detect(index_snp_table$SNPS, "^rs\\d+$") |
 
 
 index_snps <- index_snp_table %>%
-    select(disease = Disease, gwas_snp = SNPS, chr = CHR_ID, pos = CHR_POS) %>%
+    select(disease = Disease, gwas_snp = SNPS, chr = CHR_ID, pos = CHR_POS,
+           pubmed = PUBMEDID, sample = `INITIAL SAMPLE SIZE`) %>%
     mutate(coord_b38 = ifelse(is.na(chr), NA, paste0("chr", chr, ":", pos))) %>%
     mutate(coord_b38 = ifelse(is.na(coord_b38) & str_detect(gwas_snp, "chr.+:\\d+"), gwas_snp, coord_b38))
 
@@ -89,28 +91,142 @@ index_snps_cleaned <- left_join(index_snps, snps_find_rsid_b38_tbl) %>%
            coord_b38 = ifelse(is.na(index_snp) & !is.na(rs_id_rescue_b37), NA, coord_b38),
            index_snp = ifelse(is.na(index_snp) & !is.na(rs_id_rescue_b37), rs_id_rescue_b37, index_snp)) %>%
     mutate(index_snp = ifelse(is.na(index_snp), gwas_snp, index_snp)) %>%
-    select(disease, gwas_snp, index_snp, coord_b38, coord_b37)
+    select(disease, gwas_snp, index_snp, coord_b38, coord_b37, pubmed, sample)
 
 
 write_csv(index_snps_cleaned, snakemake@output$index_snp)
 
 
-snps_to_query <- unique(index_snps_cleaned$index_snp)
-
-snps_to_query_rsid <- str_subset(snps_to_query, "rs\\d+")
 
 
+pops <- snakemake@config$pops
+# pops <- c("EUR", "AFR", "AMR", "EAS", "SAS", "ALL")
+
+if (!is.null(snakemake@config$gwas_pop_key)) {
+    gwas_pop_key <- read_tsv(snakemake@config$gwas_pop_key)
+
+    sample_types <- c("individuals?",
+                      "cases?",
+                      "controls?",
+                      "men",
+                      "women",
+                      "boys?",
+                      "girls?",
+                      "adults?",
+                      "adolescents?",
+                      "children and adolescents",
+                      "children",
+                      "infants?",
+                      "neonates?",
+                      "mothers?",
+                      "fathers?",
+                      "parents?",
+                      "males?",
+                      "females?",
+                      "users?",
+                      "non-users?",
+                      "families",
+                      "trios?",
+                      "responders?",
+                      "non-responders?",
+                      "attempters?",
+                      "nonattempters?",
+                      "alcohol drinkers?",
+                      "drinkers?",
+                      "non-drinkers?",
+                      "smokers?",
+                      "non-smokers?",
+                      "donors?",
+                      "twin pairs?",
+                      "twins?",
+                      "child sibling pairs?",
+                      "fetuses",
+                      "offspring",
+                      "early adolescents?",
+                      "remitters?",
+                      "non-remitters?",
+                      "athletes?",
+                      "Individuals?",
+                      "indivduals?",
+                      "triads?",
+                      "patients?",
+                      "pairs?",
+                      "case-parent trios?",
+                      "recipients?",
+                      "affected child",
+                      "long sleepers?",
+                      "short sleepers?",
+                      "unaffected relatives?",
+                      "carriers?",
+                      "non-carriers?",
+                      "cell lines?",
+                      "indiviudals?",
+                      "referents?",
+                      "individuuals?",
+                      "duos?",
+                      "indivdiuals?",
+                      "inidividuals?")
+
+    number_regex <- "(?:(?<=(?:\\s|\\b))\\d+(?:\\,\\d+)*(?=\\s))"
+    type_regex <- paste0("(?:", paste0(sample_types, collapse = "|"), ")")
+
+
+    full_regex <- paste0(
+        "(", number_regex, ")", # greedy match first number
+        "\\s*((?:(?!.*", type_regex, ").*)|(?:.*?))\\s*", # Greedy match rest if no sample type in lookahead, or passive match
+        "(", type_regex,  "?(?!.*", type_regex, "))") # Match last sample type by ensuring no sample type in lookahead
+
+    # split_regex <- "(?<!\\d)(,[\\s\\,]*| and )(?=[\\sA-Aa-z]*[0-9]+[,0-9]*[0-9]+\\s)"
+    split_regex <- paste0("((?:,+[,\\s]*\\s+)|(?:and ))(?=[\\sA-Aa-z]*", number_regex, ")")
+
+
+    sample_terms <- index_snps_cleaned %>%
+        distinct(pubmed, sample) %>%
+        mutate(sample = str_split(sample, split_regex)) %>%
+        unnest(sample)
+
+
+    full_matches <- bind_cols(sample_terms,
+                              str_match(sample_terms$sample, full_regex) %>%
+                                  set_colnames(c("match", "number", "capture", "type")) %>%
+                                  as_tibble())
+
+    study_key_table <- full_matches %>%
+        distinct(pubmed, capture) %>%
+        rename(term = capture) %>%
+        left_join(gwas_pop_key)
+
+    index_snps_pop_match <- index_snps_cleaned %>%
+        left_join(study_key_table %>%
+                      mutate(pop = str_split(code, ",")) %>%
+                      unnest(pop) %>% distinct(pubmed, pop))
+
+    write_tsv(index_snps_pop_match, "outs/gwas_study_index_snps_matched_populations.tsv")
+
+
+} else {
+    index_snps_pop_match <- tibble(index_snp = c(), pop = c())
+}
 
 
 
+index_snps_pop_all <- crossing(index_snp = index_snps_cleaned$index_snp,
+                               pop = pops) %>%
+    bind_rows(index_snps_pop_match %>%
+                  distinct(index_snp, pop))
 
-pops <- c("EUR", "AFR", "AMR", "EAS", "SAS", "ALL")
+
+snps_to_query <- index_snps_pop_all %>%
+    filter(str_detect(index_snp, "rs\\d+"),
+           !is.na(pop)) %>%
+    arrange(pop,index_snp)
+
 
 out_dir <- "outs/SNPS_LDlink"
 
 dir.create(out_dir, showWarnings = F, recursive = T)
 
-ldlink_results <- crossing(index_snp = snps_to_query_rsid, pop = pops) %>%
+ldlink_results <- snps_to_query %>%
     mutate(ldlink_results = map2(index_snp, pop, query_ldlink, out_dir = out_dir, r2 = r2_threshold, retry_errors = snakemake@config$retry_errors))
 
 ldlink_results_table <- ldlink_results %>%
@@ -127,7 +243,8 @@ haploreg_pops <- c("EUR", "AFR", "AMR", "ASN")
 out_dir_haploreg <- "outs/SNPS_HaploReg"
 dir.create(out_dir_haploreg, showWarnings = F, recursive = T)
 
-haploreg_results <- crossing(index_snp = snps_to_query_rsid, pop = haploreg_pops) %>%
+haploreg_results <- snps_to_query %>%
+    filter(pop %in% haploreg_pops) %>%
     group_by(pop) %>% summarise(index_snps = list(index_snp)) %>%
     mutate(haploreg_results = map2(index_snps, pop, query_haploreg, force = T, out_dir = out_dir_haploreg, r2 = r2_threshold))
 

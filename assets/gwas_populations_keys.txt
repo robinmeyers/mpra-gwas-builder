@@ -1,0 +1,1492 @@
+term	code
+Afghanistan ancestry	SAS
+African	AFR
+African admixed and non-African admixed Arab ancestry	AFR
+African admixed Arab ancestry	AFR
+African American	AFR
+African American abacavir-treated	AFR
+African American active	AFR
+African American alcohol dependence	AFR
+African American alcohol dependent	AFR
+African American allergic asthma	AFR
+African American allergic asthma cases 4,360 African American	AFR
+African American allergic asthma child	AFR
+African American ancestry	AFR
+African American ancestry lymphoblastoid	AFR
+African American ancestry trauma-exposed	AFR
+African American and African ancestry	AFR
+African American and African ancestry exposed	AFR
+African American and African ancestry unexposed	AFR
+African American and African Caribbean	AFR
+African American and other ancestry	AFR
+African American APOE 4e-	AFR
+African American APOE e4+	AFR
+African American Asian or Latino child cases from 152	AFR,AMR,EAS,SAS
+African American asymptomatic neurocognitive impairment	AFR
+African American BD	AFR
+African American Bipolar disorders	AFR
+African American child	AFR
+African American child female	AFR
+African American child male	AFR
+African American chronic obstructive pulmonary disease	AFR
+African American chronic obstructive pulmonary disease smoker	AFR
+African American cognitively normal	AFR
+African American controls,1,718 European ancestry	AFR,EUR
+African American current	AFR
+African American current and former smoker	AFR
+African American current smoker	AFR
+African American dementia	AFR
+African American depression	AFR
+African American diabetic	AFR
+African American drinker	AFR
+African American ESRD	AFR
+African American exposed	AFR
+African American female	AFR
+African American focal epilepsy	AFR
+African American former smoker	AFR
+African American genetic generalised epilepsy	AFR
+African American genotype 1 HCV	AFR
+African American good response	AFR
+African American high risk-	AFR
+African American high-risk	AFR
+African American human lymphoblastoid	AFR
+African American hypertensive	AFR
+African American inactive	AFR
+African American incident	AFR
+African American individuals from 309	AFR
+African American individuals from 73	AFR
+African American individuals with at least one long-lived	AFR
+African American lupus nephritis-ESRD	AFR
+African American lymphoblastoid	AFR
+African American male	AFR
+African American men	AFR
+African American mild neurocognitive disorder	AFR
+African American newborn	AFR
+African American non-alcohol dependent	AFR
+African American non-allergic asthma	AFR
+African American non-allergic asthma child	AFR
+African American non-diabetic	AFR
+African American non-drinkers	AFR
+African American non-regular	AFR
+African American non-responder	AFR
+African American normal weight preterm birth	AFR
+African American normal weight term birth	AFR
+African American or Afro-Caribbean	AFR
+African American or Afro-Caribbean and African ancestry	AFR
+African American or Afro-Caribbean drinkers and	AFR
+African American or Afro-Caribbean heavy	AFR
+African American or Afro-Caribbean heavy and light	AFR
+African American or Afro-Caribbean light	AFR
+African American or Afro-Caribbean, African ancestry, European ancestry, East Asian ancestry, Hispanic or Latin American and South Asian ancestry	AFR,AMR,EAS,EUR,SAS
+African American or European ancestry	AFR,EUR
+African American or European ancestry female	AFR,EUR
+African American overweight or obese preterm birth	AFR
+African American overweight or obese term birth	AFR
+African American poor response	AFR
+African American post-traumatic stress disorder	AFR
+African American preterm birth	AFR
+African American prevalent	AFR
+African American recurrent	AFR
+African American regular	AFR
+African American responder	AFR
+African American Schizoaffective disorder	AFR
+African American schizophrenia	AFR
+African American Schizophrenia	AFR
+African American smoker	AFR
+African American spontaneous preterm birth	AFR
+African American systemic lupus erythrematosus without nephropathy	AFR
+African American tenofovir-treated	AFR
+African American term birth	AFR
+African American trauma-exposed	AFR
+African American trauma-unexposed	AFR
+African American type 2 diabetes	AFR
+African American unexposed	AFR
+African American women	AFR
+African American, Asian, Native Hawaiian/other Pacific Islander, Native American/Alaska native or unknown ancestry	AFR,AMR,EAS,SAS
+African American, East Asian, Hispanic/Latino or South Asian	AFR,AMR,EAS,SAS
+African American, Hispanic and other ancestry	AFR,AMR
+African American, Hispanic and other ancestry resistant	AFR,AMR
+African American, South Asian, East Asian and Hispanic ancestry	AFR,AMR,EAS,SAS
+African American/African Caribbean female	AFR
+African American/African Caribbean male	AFR
+African American/Afro-Caribbean	AFR
+African American/Afro-Caribbean ancestry	AFR
+African ancestry	AFR
+African ancestry ACE inhibitor-exposed	AFR
+African ancestry bipolar disorder	AFR
+African ancestry college graduated	AFR
+African ancestry current	AFR
+African ancestry current smoker	AFR
+African ancestry ever	AFR
+African ancestry ever smoker	AFR
+African ancestry exposed	AFR
+African ancestry former and never	AFR
+African ancestry HIV-negative	AFR
+African ancestry lymphoblastoid	AFR
+African ancestry never	AFR
+African ancestry never smoker	AFR
+African ancestry non smoker	AFR
+African ancestry non-college graduated	AFR
+African ancestry or other ancestry	AFR
+African ancestry postmenopausal	AFR
+African ancestry schizophrenia	AFR
+African ancestry, African American or Afro-Caribbean	AFR
+African and Asian ancestry	AFR
+African British	AFR
+African schizo-affective	AFR
+African-American	AFR
+African-American male	AFR
+African, African American, South East Asian, East Asian, American Indian/Alaskan Native, Mixed race, Arabic/North African, Central/South Asian or Japanese Asian ancestry	AFR,AMR,EAS,SAS
+Afro-Caribbean	AFR,AMR
+Alaskan native ancestry	AMR,EAS
+Alaskan native ancestry schizophrenia	AMR,EAS
+American ancestry	AMR
+American Indian	AMR
+American Indian ancestry	AMR
+American Indian ancestry diabetic	AMR
+American Indian ancestry young-onset	AMR
+American Indian or Alaskan Native ancestry	AMR
+American Indian, Asian, Pacific Islander or Hispanic/Latino ancestry	AMR,EAS
+Amish	EUR
+Arab ancestry	AFR,SAS
+Arab-Israeli ancestry APOE e4-	AFR,EUR,SAS
+Arab-Israeli ancestry e4-	AFR,EUR,SAS
+Arabian ancestry	AFR,SAS
+Ashkenazi Jewish	EUR
+Ashkenazi Jewish ancestry	EUR
+Ashkenazi Jewish bipolar disorder	EUR
+Ashkenazi Jewish founder	EUR
+Ashkenazi Jewish non-BRCA1/2 carriers	EUR
+Ashkenazi Jewish schizophrenia	EUR
+Ashkenazi Jewish, French Canadian and other European ancestry Tourette's Syndrome	EUR
+Ashkenazi Jewish, South African Afrikaner ancestry, and other European ancestry OCD	AFR,EUR
+Ashkenazi Jewish, South African Afrikaner ancestry, French Canadian and other European ancestry OCD and Tourette's syndrome	AFR,EUR
+Asian	EAS,SAS
+Asian American	EAS,SAS
+Asian American ancestry	EAS,SAS
+Asian American individuals 15 admixed	EAS,SAS
+Asian ancestry	EAS,SAS
+Asian ancestry active	EAS,SAS
+Asian ancestry case-parent duos or	EAS,SAS
+Asian ancestry cases and their unaffected	EAS,SAS
+Asian ancestry child	EAS,SAS
+Asian ancestry college graduated	EAS,SAS
+Asian ancestry controls,170 European ancestry	EAS,EUR,SAS
+Asian ancestry current	EAS,SAS
+Asian ancestry current smoker	EAS,SAS
+Asian ancestry drinkers and	EAS,SAS
+Asian ancestry ever	EAS,SAS
+Asian ancestry ever smoker	EAS,SAS
+Asian ancestry former and never	EAS,SAS
+Asian ancestry heavy	EAS,SAS
+Asian ancestry heavy and light	EAS,SAS
+Asian ancestry inactive	EAS,SAS
+Asian ancestry light	EAS,SAS
+Asian ancestry lithium treated bipolar disorder	EAS,SAS
+Asian ancestry never	EAS,SAS
+Asian ancestry never smoker	EAS,SAS
+Asian ancestry non smoker	EAS,SAS
+Asian ancestry non-college graduated	EAS,SAS
+Asian ancestry non-regular	EAS,SAS
+Asian ancestry osteonecrosis	EAS,SAS
+Asian ancestry postmenopausal	EAS,SAS
+Asian ancestry recurrent	EAS,SAS
+Asian ancestry regular	EAS,SAS
+Asian ancestry schizophrenia	EAS,SAS
+Asian ancestry Schizophrenia	EAS,SAS
+Asian ancestry treated	EAS,SAS
+Asian Indian ancestry	EAS,SAS
+Asian or Native Hawaiian ancestry	EAS,SAS
+Asian or Pacific Islander ancestry newborn	EAS,SAS
+Asian, African or First Nation ancestry	EAS,SAS
+Asian, European, African and other ancestry	AFR,EAS,EUR,SAS
+Asian, Native American and other ancestry	EAS,SAS
+Austrian ancestry	EUR
+Austrian ancestry advanced colorectal adenoma	EUR
+Austrian ancestry colonoscopy-negative	EUR
+Austrian ancestry colorectal cancer	EUR
+Bangladeshi	SAS
+Bangladeshi ancestry	SAS
+Bangladeshi ancestry (non-array genotyped, whole-genome imputed)	SAS
+Bangladeshi ancestry current smoker	SAS
+Bangladeshi ancestry ever smoker	SAS
+Bangladeshi ancestry former smoker	SAS
+Bangladeshi ancestry never smoker	SAS
+Bangladeshi ancestry normal weight	SAS
+Bangladeshi ancestry overweight	SAS
+Bangladeshi ancestry underweight	SAS
+Beninese	AFR
+Black	AFR
+Black child	AFR
+Black non-Hispanic HIV-negative	AFR
+Black non-Hispanic HIV-positive	AFR
+Black or African American	AFR
+Black osteonecrosis	AFR
+Black treated	AFR
+Brazilian	AMR
+Brazilian ancestry	AMR
+Brazilian ancestry high dose	AMR
+Brazilian ancestry low dose	AMR
+Brazilian ancestry male	AMR
+British	EUR
+British ancestry	EUR
+British ancestry black hair	EUR
+British ancestry blond hair	EUR
+British ancestry brown hair	EUR
+British ancestry brown or black hair	EUR
+British ancestry diabetic individuals from 6863	EUR
+British ancestry elevated blood pressure	EUR
+British ancestry female	EUR
+British ancestry from 6863	EUR
+British ancestry glaucoma	EUR
+British ancestry hypertension crisis	EUR
+British ancestry individuals from 6863	EUR
+British ancestry individuals with	EUR
+British ancestry individuals with no	EUR
+British ancestry male	EUR
+British ancestry non-diabetics individuals from 6863	EUR
+British ancestry normal blood pressure	EUR
+British ancestry obese	EUR
+British ancestry red hair	EUR
+British ancestry stage 1 hypertension	EUR
+British ancestry stage 2 hypertension	EUR
+British and Irish ancestry	EUR
+British and unknown ancestry	EUR
+British oversleeper	EUR
+British undersleeper	EUR
+Bulgarian ancestry	EUR
+Cape Verdian	AFR
+Caribbean ancestry	AFR,AMR
+Caribbean Hispanic	AMR
+Caribbean Hispanic/Latino	AMR
+Carlantino (founder/genetic isolate)	EUR
+Carlantino (founder/genetic isolated)	EUR
+Celtic ancestry	EUR
+Central American ancestry	AMR
+Central Asian ancestry	EAS,SAS
+Central European ancestry child	EUR
+Chilean	AMR
+Chinese ancestry	EAS
+Chinese ancestry carrier	EAS
+Chinese ancestry controls from 275	EAS
+Chinese ancestry dizygotic	EAS
+Chinese ancestry ESCC	EAS
+Chinese ancestry female	EAS
+Chinese ancestry gastric cancer	EAS
+Chinese ancestry individuals, European	EAS
+Chinese ancestry individuals, European ancestry	EAS
+Chinese ancestry left-side-affected	EAS
+Chinese ancestry male	EAS
+Chinese ancestry persistently infected	EAS
+Chinese ancestry recurrent major depressive disorder	EAS
+Chinese ancestry right-side-affected	EAS
+Chinese ancestry spontaneously recovered	EAS
+Chinese Han ancestry	EAS
+Chinese Han ancestry uterine myoma or hydrosalpinx	EAS
+Chinese-American	EAS
+Chinese, Malay and Asian Indian ancestry	EAS,SAS
+Cilento (founder/genetic isolate)	EUR
+Cilento (founder/genetic isolated)	EUR
+Costa Rican founder population smoker	AMR
+Croatian ancestry	EUR
+Cuban ancestry	AMR
+Curacao	AMR
+Czech or Slovak	EUR
+Dai Chinese ancestry	EAS
+Danish ancestry	EUR
+Danish ancestry female	EUR
+Danish ancestry male	EUR
+Dominican ancestry	AMR
+Dominican Republic ancestry	AMR
+Dutch	EUR
+Dutch ancestry	EUR
+Dutch founder	EUR
+East Asian	EAS
+East Asian ancestry	EAS
+East Asian ancestry drinker	EAS
+East Asian ancestry female	EAS
+East Asian ancestry gout	EAS
+East Asian ancestry HBV	EAS
+East Asian ancestry hyperuricemia	EAS
+East Asian ancestry individuals from 15	EAS
+East Asian ancestry lymphoblastoid	EAS
+East Asian ancestry male	EAS
+East Asian ancestry mandibular	EAS
+East Asian ancestry maxillary	EAS
+East Asian ancestry methamphetamine-dependent	EAS
+East Asian ancestry never smoker	EAS
+East Asian ancestry non-depressive	EAS
+East Asian ancestry non-drinker	EAS
+East Asian ancestry prepressive	EAS
+East Asian ancestry spontaneously HBV-resolved	EAS
+East Asian ancestry treated	EAS
+East Asian ancestry treated breast cancer	EAS
+East Asian seropositive	EAS
+East Asian, South Asian, and South East Asian ancestry	EAS,SAS
+Erasmus Rucphen	EUR
+Erasmus Rucphen (founder/genetic isolate)	EUR
+Erasmus Rucphen (founder/genetic isolate) female	EUR
+Erasmus Rucphen (founder/genetic isolated)	EUR
+Erasmus Rucphen Family	EUR
+Erasmus Rucphen population isolate	EUR
+Ethiopian	AFR
+Europea ancestry	EUR
+European	EUR
+European American	EUR
+European American alcohol dependent	EUR
+European American allergic asthma	EUR
+European American allergic asthma child	EUR
+European American ancestry abacavir-treated	EUR
+European American ancestry tenofovir-treated	EUR
+European American and Mexican American	AMR,EUR
+European American child	EUR
+European American hypertensive	EUR
+European American individuals from 75	EUR
+European American individuals with at least one long-lived	EUR
+European American non-alcohol dependent	EUR
+European American non-allergic asthma	EUR
+European American non-allergic asthma child	EUR
+European ance other ancestry	EUR
+European ancesrty	EUR
+European ancestry	EUR
+European ancestry  bipolar disorder	EUR
+European ancestry  BRCA1 carrrier	EUR
+European ancestry  class I obese	EUR
+European ancestry  HER2-negative	EUR
+European ancestry < 386ms female	EUR
+European ancestry > 445ms female	EUR
+European ancestry 15-18-month-old	EUR
+European ancestry 24-30-month-old	EUR
+European ancestry 50% oldest-onset	EUR
+European ancestry abdominal aortic aneurysm	EUR
+European ancestry ACA-positive	EUR
+European ancestry accommodative	EUR
+European ancestry ACE inhibitor-exposed	EUR
+European ancestry ACL-negative	EUR
+European ancestry ACL-positive	EUR
+European ancestry ACPA negative RA	EUR
+European ancestry ACPA positive RA	EUR
+European ancestry active	EUR
+European ancestry AD	EUR
+European ancestry AD dementia	EUR
+European ancestry adenocarcinoma	EUR
+European ancestry ADHD	EUR
+European ancestry adolescent	EUR
+European ancestry adult	EUR
+European ancestry adults from 1,613	EUR
+European ancestry affected	EUR
+European ancestry affected offspring	EUR
+European ancestry affected sibling pair	EUR
+European ancestry age 14	EUR
+European ancestry age 6	EUR
+European ancestry aggressive	EUR
+European ancestry aggressive prostate cancer	EUR
+European ancestry alchocol dependent	EUR
+European ancestry alcohol abuse	EUR
+European ancestry alcohol dependence	EUR
+European ancestry allergic diseases	EUR
+European ancestry alloantibody-negative previously pregnant	EUR
+European ancestry alloantibody-positive previously pregnant	EUR
+European ancestry ALS	EUR
+European ancestry Alzheimer	EUR
+European ancestry Alzheimer disease	EUR
+European ancestry Alzheimer's disease	EUR
+European ancestry Alzheimer's disease dementia	EUR
+European ancestry Alzheimer's diseases	EUR
+European ancestry Alzheimers	EUR
+European ancestry amnestic mild cognitive impairment	EUR
+European ancestry and African American	AFR,EUR
+European ancestry and African American successfully aged	AFR,EUR
+European ancestry and East Asian ancestry	EAS,EUR
+European ancestry and Erasmus Rucphen	EUR
+European ancestry and Indian Asian ancestry	EUR,SAS
+European ancestry ankylosing spondylitis	EUR
+European ancestry anorexia nervosa	EUR
+European ancestry Anti-B2GPI-negative	EUR
+European ancestry Anti-B2GPI-positive	EUR
+European ancestry antibody-negative	EUR
+European ancestry antibody-positive	EUR
+European ancestry anxiety disorder	EUR
+European ancestry APOE e4-	EUR
+European ancestry APOE e4+	EUR
+European ancestry AQP4-IgG antibody seronegative	EUR
+European ancestry AQP4-IgG antibody seropositive	EUR
+European ancestry ASD	EUR
+European ancestry asthma	EUR
+European ancestry Asthma	EUR
+European ancestry asthmatic child	EUR
+European ancestry asthmatic children and their	EUR
+European ancestry asymptomatic neurocognitive impairment	EUR
+European ancestry ATA-positive	EUR
+European ancestry atopic dermatitis	EUR
+European ancestry atopy and asthma	EUR
+European ancestry atopy only	EUR
+European ancestry atrial fibrillation	EUR
+European ancestry Attention defcit-hyperactivity disorder trio	EUR
+European ancestry attention deficit hyperactivity disorder	EUR
+European ancestry Attention deficit-hyperactivity disorder	EUR
+European ancestry autism	EUR
+European ancestry autism spectrum disorder	EUR
+European ancestry Autism spectrum disorder	EUR
+European ancestry Autism spectrum disorder trio	EUR
+European ancestry average onset	EUR
+European ancestry Barrett's oesophagus	EUR
+European ancestry BD	EUR
+European ancestry behavioural variant	EUR
+European ancestry bipolar	EUR
+European ancestry bipolar 1 disorder	EUR
+European ancestry bipolar disorder	EUR
+European ancestry Bipolar disorder	EUR
+European ancestry bipolar disorder responder	EUR
+European ancestry Bipolar disorders	EUR
+European ancestry bipolar I	EUR
+European ancestry bipolar II	EUR
+European ancestry black hair	EUR
+European ancestry blond hair	EUR
+European ancestry BRCA1 carrrier	EUR
+European ancestry BRCA1 mutation carrier	EUR
+European ancestry breast cancer	EUR
+European ancestry breast cancer female	EUR
+European ancestry broad depression	EUR
+European ancestry brown hair	EUR
+European ancestry C9orf72-positive	EUR
+European ancestry cannabis use	EUR
+European ancestry carrier	EUR
+European ancestry case-father	EUR
+European ancestry case-mother	EUR
+European ancestry case-parent duos or	EUR
+European ancestry cases and	EUR
+European ancestry cases and their unaffected	EUR
+European ancestry cases from 1416	EUR
+European ancestry cases from 207	EUR
+European ancestry cases from 34 high-risk	EUR
+European ancestry cases with a	EUR
+European ancestry cases, ~20,000 European ancestry	EUR
+European ancestry cases, ~3,000 European ancestry	EUR
+European ancestry cases,1,725 African American ancestry	AFR,EUR
+European ancestry cases,195 European ancestry	EUR
+European ancestry cases,55 European ancestry	EUR
+European ancestry cases,up to 258 African ancestry	AFR,EUR
+European ancestry celiac disease	EUR
+European ancestry child	EUR
+European ancestry child and adolescent	EUR
+European ancestry child cases from 1,217	EUR
+European ancestry children from 2,145	EUR
+European ancestry cholangiocarcinoma	EUR
+European ancestry cholangiocarcinoma-free	EUR
+European ancestry choroidal neovascularization	EUR
+European ancestry chronic HCV	EUR
+European ancestry chronic lymphocytic leukemia	EUR
+European ancestry chronic obstructive pulmonary disease	EUR
+European ancestry Chronic obstructive pulmonary disease	EUR
+European ancestry chronic obstructive pulmonary disease smoker	EUR
+European ancestry Citalopram treated	EUR
+European ancestry class II obese	EUR
+European ancestry class III obese	EUR
+European ancestry clinic-based	EUR
+European ancestry clozapine-treated and untreated	EUR
+European ancestry cognitively normal	EUR
+European ancestry cognitively unimpaired	EUR
+European ancestry college graduated	EUR
+European ancestry colorectal cancer	EUR
+European ancestry colorectal carcinoma	EUR
+European ancestry colorectal tumor	EUR
+European ancestry common variable inmunodeficiency	EUR
+European ancestry comparatively older	EUR
+European ancestry comparatively younger	EUR
+European ancestry complete and incomplete	EUR
+European ancestry congenital heart disease	EUR
+European ancestry continuous smoker	EUR
+European ancestry contols	EUR
+European ancestry control	EUR
+European ancestry controls (includes non-array genotyped, whole genome imputed	EUR
+European ancestry controls (includes non-array genotyped, whole-genome imputed	EUR
+European ancestry controls from 118	EUR
+European ancestry controls from 1235 parent-offspring	EUR
+European ancestry controls from 32	EUR
+European ancestry controls from 410	EUR
+European ancestry controls from 548	EUR
+European ancestry controls from 7,694	EUR
+European ancestry controls with post-deployment	EUR
+European ancestry COPD	EUR
+European ancestry Crohn's disease	EUR
+European ancestry Crohn’s disease	EUR
+European ancestry current	EUR
+European ancestry current and former smoker	EUR
+European ancestry current smoker	EUR
+European ancestry cutaneous melanoma	EUR
+European ancestry dark hair	EUR
+European ancestry dentures	EUR
+European ancestry depression	EUR
+European ancestry diabetic	EUR
+European ancestry diffuse large B-cell lymphoma	EUR
+European ancestry donors (	EUR
+European ancestry drinker	EUR
+European ancestry drinkers and	EUR
+European ancestry drug-exposed	EUR
+European ancestry early mild cognitive impairment	EUR
+European ancestry early onset	EUR
+European ancestry early-onset	EUR
+European ancestry early-onset eczema and childhood asthma	EUR
+European ancestry Elated mania	EUR
+European ancestry elderly	EUR
+European ancestry endometrial carcinoma	EUR
+European ancestry endometrioid	EUR
+European ancestry ER-	EUR
+European ancestry Escitalpram treated	EUR
+European ancestry esophageal adenocarcinoma	EUR
+European ancestry estrogen receptor negative breast cancer	EUR
+European ancestry estrogen receptor-negative	EUR
+European ancestry estrogen-receptor negative	EUR
+European ancestry estrogen-receptor positive	EUR
+European ancestry ETV6-RUNX1 positive	EUR
+European ancestry evening	EUR
+European ancestry evening chronotype	EUR
+European ancestry ever	EUR
+European ancestry ever smoker	EUR
+European ancestry ever smoking	EUR
+European ancestry ever-smoker	EUR
+European ancestry exposed	EUR
+European ancestry extreme	EUR
+European ancestry extremely obese adult	EUR
+European ancestry familial	EUR
+European ancestry familial Parkinson's disease	EUR
+European ancestry father-child	EUR
+European ancestry female	EUR
+European ancestry female child	EUR
+European ancestry female migrain	EUR
+European ancestry females from 21	EUR
+European ancestry focal epilepsy	EUR
+European ancestry follicular lymphoma	EUR
+European ancestry former and never	EUR
+European ancestry former smoker	EUR
+European ancestry Frontotremporal dementia with motor neuron disease	EUR
+European ancestry FTD	EUR
+European ancestry genetic absence epilepsies	EUR
+European ancestry genetic generalised epilepsy	EUR
+European ancestry geographic atrophy	EUR
+European ancestry good response	EUR
+European ancestry grade 1	EUR
+European ancestry grade 5	EUR
+European ancestry granulomatosis with polyangiitis	EUR
+European ancestry Graves disease	EUR
+European ancestry GRN mutation carrier	EUR
+European ancestry Hashimoto's thyroiditis	EUR
+European ancestry HCV-infected	EUR
+European ancestry head and neck cancer	EUR
+European ancestry healthy	EUR
+European ancestry healthy elderly	EUR
+European ancestry heavy	EUR
+European ancestry heavy and light	EUR
+European ancestry heavy and light/non-drinker	EUR
+European ancestry heavy smokers with high FEV1 measure	EUR
+European ancestry heavy smokers with low FEV1 measure	EUR
+European ancestry heparin-exposed	EUR
+European ancestry HER2-positive	EUR
+European ancestry heterosexual	EUR
+European ancestry high BMD	EUR
+European ancestry high body mass index	EUR
+European ancestry high consumption	EUR
+European ancestry high interferon alpha	EUR
+European ancestry high mammographic density	EUR
+European ancestry high NFT	EUR
+European ancestry high radon exposure	EUR
+European ancestry high titer	EUR
+European ancestry high waist-to-hip ratio	EUR
+European ancestry high-risk	EUR
+European ancestry HIV-infected male	EUR
+European ancestry Hodgkin lymphoma	EUR
+European ancestry homosexual	EUR
+European ancestry human lymphoblastoid	EUR
+European ancestry hypertensive	EUR
+European ancestry idiopathic inflammatory myopathy	EUR
+European ancestry inactive	EUR
+European ancestry individuals (blood measure	EUR
+European ancestry individuals (liver measure	EUR
+European ancestry individuals (unimpaired cognition, mild cognitive impair	EUR
+European ancestry individuals 1,792 Erasmus Rucphen	EUR
+European ancestry individuals from ~475	EUR
+European ancestry individuals from 1,470	EUR
+European ancestry individuals from 117	EUR
+European ancestry individuals from 117 alcohol dependence affected	EUR
+European ancestry individuals from 118	EUR
+European ancestry individuals from 150	EUR
+European ancestry individuals from 2,892	EUR
+European ancestry individuals from 21	EUR
+European ancestry individuals from 2567	EUR
+European ancestry individuals from 270	EUR
+European ancestry individuals from 307	EUR
+European ancestry individuals from 310	EUR
+European ancestry individuals from 355	EUR
+European ancestry individuals from 364	EUR
+European ancestry individuals from 438	EUR
+European ancestry individuals from 586	EUR
+European ancestry individuals from 6,758	EUR
+European ancestry individuals from 780	EUR
+European ancestry individuals from 929 twin	EUR
+European ancestry individuals from 956	EUR
+European ancestry individuals from 99	EUR
+European ancestry individuals from ADHD	EUR
+European ancestry individuals with average FEV1 measure	EUR
+European ancestry individuals with blood pressure measure	EUR
+European ancestry individuals with decayed, missing or filled tooth surface measure	EUR
+European ancestry individuals with depressive symptom measure	EUR
+European ancestry individuals with early mild cognitive impair	EUR
+European ancestry individuals with high FEV1 measure	EUR
+European ancestry individuals with intraocular pressure measure	EUR
+European ancestry individuals with late mild cognitive impair	EUR
+European ancestry individuals with low FEV1 measure	EUR
+European ancestry individuals with mild cognitive impair	EUR
+European ancestry individuals with no	EUR
+European ancestry individuals with statin treat	EUR
+European ancestry individuals with vertical cup-disc ratio measure	EUR
+European ancestry individuals without statin treat	EUR
+European ancestry individuals, Up to 265 Black individuals, Up to 175 Hispanic	AFR,AMR,EUR
+European ancestry individuals, Up to 545 Black individuals, Up to 314 Hispanic	AFR,AMR,EUR
+European ancestry individuals,1,579 Chinese Han ancestry	EAS,EUR
+European ancestry intolerant	EUR
+European ancestry intracranial aneurysm	EUR
+European ancestry invasive	EUR
+European ancestry invasive epithelial ovarian cancer female	EUR
+European ancestry iron deficiency	EUR
+European ancestry Irritable mania	EUR
+European ancestry ischemic	EUR
+European ancestry ischemic stroke	EUR
+European ancestry JAK2 negative	EUR
+European ancestry JIA-associated uveitis	EUR
+European ancestry juvenile idiopathic arthritis	EUR
+European ancestry juvenile myoclonic epilepsy	EUR
+European ancestry kidney cancer	EUR
+European ancestry LAC-negative	EUR
+European ancestry LAC-positive	EUR
+European ancestry lamotrigine-induced hypersensitivity	EUR
+European ancestry large artery atherosclerosis	EUR
+European ancestry late mild cognitive impairment	EUR
+European ancestry late onset	EUR
+European ancestry late-onset Alzheimer's disease	EUR
+European ancestry latent autoimmune diabetes	EUR
+European ancestry lean	EUR
+European ancestry left-handed	EUR
+European ancestry less-fat diet	EUR
+European ancestry light	EUR
+European ancestry light hair	EUR
+European ancestry lithium treated bipolar disorder	EUR
+European ancestry liver transplant-free	EUR
+European ancestry liver transplantation	EUR
+European ancestry lobar	EUR
+European ancestry long-lived	EUR
+European ancestry long-living	EUR
+European ancestry long-term progressor male	EUR
+European ancestry low BMD	EUR
+European ancestry low body mass index	EUR
+European ancestry low interferon alpha	EUR
+European ancestry low malignant potential	EUR
+European ancestry low mammographic density	EUR
+European ancestry low NFT	EUR
+European ancestry low or no titer	EUR
+European ancestry low radon exposure	EUR
+European ancestry low tanning	EUR
+European ancestry low waist-to-hip ratio	EUR
+European ancestry lung adenocarcinoma	EUR
+European ancestry lung cancer	EUR
+European ancestry lung squamous cell carcinoma	EUR
+European ancestry lymphoblast	EUR
+European ancestry lymphoblastoid	EUR
+European ancestry major depressive disorder	EUR
+European ancestry Major depressive disorder	EUR
+European ancestry male	EUR
+European ancestry male child	EUR
+European ancestry malignant cutaneous melanoma	EUR
+European ancestry marginal zone lymphoma	EUR
+European ancestry MCI	EUR
+European ancestry MCI dementia	EUR
+European ancestry MDD	EUR
+European ancestry medically refractory ulcerative colitis	EUR
+European ancestry men	EUR
+European ancestry microscopic polyangiitis	EUR
+European ancestry middle-aged adult	EUR
+European ancestry migraine	EUR
+European ancestry mild	EUR
+European ancestry mild cognitive impairment	EUR
+European ancestry Mild Cognitive Impairment	EUR
+European ancestry mild neurocognitive disorder	EUR
+European ancestry MMR vaccine-related febrile seizures	EUR
+European ancestry MMR vaccine-unrelated febrile seizures	EUR
+European ancestry moderate	EUR
+European ancestry moderate and high tanning	EUR
+European ancestry moderate high BMD	EUR
+European ancestry moderate progressor male	EUR
+European ancestry monoclonal gammopathy	EUR
+European ancestry monozygotic	EUR
+European ancestry morbidly obese	EUR
+European ancestry more-fat diet	EUR
+European ancestry morning	EUR
+European ancestry morning chronotype	EUR
+European ancestry mother-child	EUR
+European ancestry mothers of spontaneous dizygotic	EUR
+European ancestry multiple keratinocyte cancer	EUR
+European ancestry multiple myeloma	EUR
+European ancestry multiple sclerosis	EUR
+European ancestry neuroblastoma	EUR
+European ancestry neuropsychiatric disorder	EUR
+European ancestry neutral	EUR
+European ancestry never	EUR
+European ancestry never smoker	EUR
+European ancestry never smokers with high FEV1 measure	EUR
+European ancestry never smokers with low FEV1 measure	EUR
+European ancestry never smoking	EUR
+European ancestry never-smoker	EUR
+European ancestry newborn	EUR
+European ancestry no or low consumption	EUR
+European ancestry non smoker	EUR
+European ancestry non-accommodative	EUR
+European ancestry non-aggressive	EUR
+European ancestry non-allergic non-sensitized child	EUR
+European ancestry non-allergic non-sensitized normal child	EUR
+European ancestry non-array genotype imputed	EUR
+European ancestry non-black hair	EUR
+European ancestry non-blond hair	EUR
+European ancestry non-brown hair	EUR
+European ancestry non-college graduated	EUR
+European ancestry non-diabetic	EUR
+European ancestry non-diabetic elderly	EUR
+European ancestry non-drinker	EUR
+European ancestry non-medically refractory ulcerative colitis	EUR
+European ancestry non-multiple sclerosis	EUR
+European ancestry non-obese	EUR
+European ancestry non-obstructive azoospermic	EUR
+European ancestry non-red hair	EUR
+European ancestry non-regular	EUR
+European ancestry non-responder	EUR
+European ancestry non-responders to first treat	EUR
+European ancestry non-Richardson's syndrome	EUR
+European ancestry non-right-handed	EUR
+European ancestry non-small cell lung cancer	EUR
+European ancestry non-survivor	EUR
+European ancestry non-treatment resistant	EUR
+European ancestry non/occasional, light-to-moderate, and heavy drinker	EUR
+European ancestry nonlobar	EUR
+European ancestry normal or lean	EUR
+European ancestry obese	EUR
+European ancestry obsessive-compulsive disorder	EUR
+European ancestry OCB negative	EUR
+European ancestry OCB positive	EUR
+European ancestry OCD parent-child	EUR
+European ancestry older	EUR
+European ancestry older adult	EUR
+European ancestry oligozoospermic	EUR
+European ancestry open-angle glaucoma	EUR
+European ancestry opioid misusers (impeded progression)	EUR
+European ancestry opioid-dependent daily injector	EUR
+European ancestry oral cavity cancer	EUR
+European ancestry oropharynx cancer	EUR
+European ancestry osteonecrosis	EUR
+European ancestry ostium secundum atrial septal defect	EUR
+European ancestry other genetic generalized epilepsies	EUR
+European ancestry ovarian cancer	EUR
+European ancestry ovarian endometrioid carcinoma	EUR
+European ancestry overweight	EUR
+European ancestry overweight or obese	EUR
+European ancestry pediatric	EUR
+European ancestry persistent asthma	EUR
+European ancestry phenytoin-induced hypersensitivity	EUR
+European ancestry poor response	EUR
+European ancestry population	EUR
+European ancestry post-pubescent	EUR
+European ancestry post-traumatic stress disorder	EUR
+European ancestry postmenopausal	EUR
+European ancestry prepubescent	EUR
+European ancestry preterm birth	EUR
+European ancestry primary acute anterior uveitis	EUR
+European ancestry primary open angle glaucoma	EUR
+European ancestry primary sclerosing cholangitis	EUR
+European ancestry Progressive nonfluent aphasia	EUR
+European ancestry prostate cancer	EUR
+European ancestry prostate cancer male	EUR
+European ancestry proxy	EUR
+European ancestry psoriasis	EUR
+European ancestry psychosis	EUR
+European ancestry pubescent	EUR
+European ancestry rapid progressor male	EUR
+European ancestry recurrent	EUR
+European ancestry red hair	EUR
+European ancestry regular	EUR
+European ancestry related	EUR
+European ancestry remitted asthma	EUR
+European ancestry resilient	EUR
+European ancestry resistant	EUR
+European ancestry responder	EUR
+European ancestry responders to first treat	EUR
+European ancestry rheumatoid arthritis	EUR
+European ancestry Richardson's syndrome	EUR
+European ancestry right-handed	EUR
+European ancestry rotator cuff tear	EUR
+European ancestry Sarcoidosis	EUR
+European ancestry schizo-affective	EUR
+European ancestry schizoaffective	EUR
+European ancestry Schizoaffective disorder	EUR
+European ancestry schizophrenia	EUR
+European ancestry Schizophrenia	EUR
+European ancestry self-reported major depressive disorder	EUR
+European ancestry Semantic dementia	EUR
+European ancestry sero-negative	EUR
+European ancestry sero-postitive	EUR
+European ancestry seroconverter	EUR
+European ancestry seronegative	EUR
+European ancestry seropositive non-progressors	EUR
+European ancestry seropositive rapid progressors	EUR
+European ancestry serous ovarian cancer	EUR
+European ancestry severe	EUR
+European ancestry short	EUR
+European ancestry shoulder impingement	EUR
+European ancestry siblings	EUR
+European ancestry single keratinocyte cancer	EUR
+European ancestry small vessel stroke	EUR
+European ancestry smoker	EUR
+European ancestry spontaneously cleared HCV	EUR
+European ancestry sproadic Parkinson's disease	EUR
+European ancestry squamous cell carcinoma	EUR
+European ancestry stage 1	EUR
+European ancestry stage 1 or 2	EUR
+European ancestry stage 2	EUR
+European ancestry stage 3	EUR
+European ancestry stage 3 or 4	EUR
+European ancestry stage 4	EUR
+European ancestry survivor	EUR
+European ancestry sustained quitter	EUR
+European ancestry systemic lupus erythematosus	EUR
+European ancestry systemic sclerosis	EUR
+European ancestry tall	EUR
+European ancestry term birth	EUR
+European ancestry testicular cancer survivor	EUR
+European ancestry thick CCT	EUR
+European ancestry thin	EUR
+European ancestry thin CCT	EUR
+European ancestry thoracic aortic aneurysm	EUR
+European ancestry thyroiditis	EUR
+European ancestry tolerant	EUR
+European ancestry trauma-exposed	EUR
+European ancestry trauma-exposed and unexposed	EUR
+European ancestry treated	EUR
+European ancestry treated breast cancer	EUR
+European ancestry treated schizophrenia	EUR
+European ancestry treatment resistant	EUR
+European ancestry trios with asthmatic	EUR
+European ancestry triple negative	EUR
+European ancestry twins and their	EUR
+European ancestry twins from 1,089	EUR
+European ancestry twins from 666	EUR
+European ancestry twins from 894	EUR
+European ancestry twins in 1,905	EUR
+European ancestry type 1	EUR
+European ancestry type 1 diabetes	EUR
+European ancestry Type 1 diabetes	EUR
+European ancestry Type 1 Diabetes	EUR
+European ancestry type 1 diabetes and neuropathy	EUR
+European ancestry type 2 diabetes	EUR
+European ancestry type 2 diabetes and neuropathy	EUR
+European ancestry type 2 diabetes cases and	EUR
+European ancestry type 2 diabetes female	EUR
+European ancestry ulcerative colitis	EUR
+European ancestry unaffected	EUR
+European ancestry uncertain phenotype adult	EUR
+European ancestry uncertain phenotype child	EUR
+European ancestry unexposed	EUR
+European ancestry unrelated	EUR
+European ancestry unrelated members of	EUR
+European ancestry untreated	EUR
+European ancestry venous thrombosis	EUR
+European ancestry whole genome sequenced	EUR
+European ancestry whole genome sequenced controls, African American	AFR,EUR
+European ancestry whole-exome sequenced	EUR
+European ancestry whole-genome sequenced	EUR
+European ancestry with genotype 1 HCV	EUR
+European ancestry women	EUR
+European ancestry young	EUR
+European ancestry young adult	EUR
+European ancestry young female	EUR
+European ancestry, African American and unknown ancestry	AFR,EUR
+European ancestry, African American or Afro-Caribbean, East Asian ancestry, Hispanic or Latin American	AFR,AMR,EAS,EUR
+European ancestry, African American, and other ancestry	AFR,EUR
+European and African ancestry	AFR,EUR
+European and East Asian ancestry	EAS,EUR
+European and East Asian ancestry lithium non-responder bipolar disorder	EAS,EUR
+European and East Asian ancestry lithium responder bipolar disorder	EAS,EUR
+European and East Asian ancestry schizophrenia	EAS,EUR
+European and Japanese ancestry	EAS,EUR
+European and Japanese ancestry endometriosis	EAS,EUR
+European and Mexican ancestry exposed	AMR,EUR
+European and other ancestry	EUR
+European and other ancestry Alzheimer's disease	EUR
+European and other ancestry APOEe4	EUR
+European and other ancestry bipolar	EUR
+European and other ancestry early mild cognitive impairment	EUR
+European and other ancestry health	EUR
+European and other ancestry healthy	EUR
+European and other ancestry late mild cognitive impairment	EUR
+European and other ancestry negative	EUR
+European and other ancestry p.Phe508del homozygote	EUR
+European and other ancestry placebo-controlled	EUR
+European and other ancestry positive	EUR
+European and other ancestry rheumatoid arthritis	EUR
+European and other ancestry zileuton-treated	EUR
+European and South Asian ancestry	EUR,SAS
+European and unknown ancestry	EUR
+European and unknown ancestry ADHD	EUR
+European and unknown ancestry Barrett's esophagus	EUR
+European and unknown ancestry bipolar disorder	EUR
+European and unknown ancestry epilepsy	EUR
+European and unknown ancestry esophageal adenocarcinoma	EUR
+European and unknown ancestry genotoxic compound-exposed	EUR
+European and unknown ancestry genotoxic compound-exposed controls,255 European and unknown ancestry unexposed	EUR
+European and unknown ancestry hypopharynx cancer	EUR
+European and unknown ancestry modified Rankin score 0-1	EUR
+European and unknown ancestry modified Rankin score 0-2	EUR
+European and unknown ancestry modified Rankin score 2-6	EUR
+European and unknown ancestry modified Rankin score 3-6	EUR
+European and unknown ancestry multiple keratinocyte cancer	EUR
+European and unknown ancestry mutation	EUR
+European and unknown ancestry non-	EUR
+European and unknown ancestry overlapping	EUR
+European and unknown ancestry single keratinocyte cancer	EUR
+European and unknown ancestry unexposed	EUR
+European asthma	EUR
+European dermatomyositis	EUR
+European female	EUR
+European individuals from 2,585 independent	EUR
+European juvenile dermatomyositis ancestry	EUR
+European or East Asian	EAS,EUR
+European or East Asian ancestry	EAS,EUR
+European, African American and Asian ancestry	AFR,EAS,EUR,SAS
+European, African American and Hispanic unmedicated bipolar disorder	AFR,AMR,EUR
+European, African American and Hispanic unmedicated major depressive disorder	AFR,AMR,EUR
+European, African American and Native American ancestry	AFR,AMR,EUR
+European, African American and Native American ancestry cases with psychosis from 264	AFR,AMR,EUR
+European, African American and Native American ancestry cases without psychosis from 264	AFR,AMR,EUR
+European, African American and other ancestry	AFR,EUR
+European, African American and other ancestry substance dependence	AFR,EUR
+European, African American and unknown ancestry	AFR,EUR
+European, African American, Asian and other ancestry	AFR,EAS,EUR,SAS
+European, African American, Asian and other ancestry darapladib-treated	AFR,EAS,EUR,SAS
+European, African American, Asian and other ancestry placebo-treated	AFR,EAS,EUR,SAS
+European, African American, Asian, Native American and other admixed ancestry	AFR,AMR,EAS,EUR,SAS
+European, African American, Asian, Native American and other admixed ancestry sibling	AFR,AMR,EAS,EUR,SAS
+European, African American, Asian, other and unknown ancestry	AFR,EAS,EUR,SAS
+European, African American, Asian, other and unknown ancestry schizoaffective disorder	AFR,EAS,EUR,SAS
+European, African American, Asian, other and unknown ancestry schizophrenia	AFR,EAS,EUR,SAS
+European, African American, East Asian, South Asian or Hispanic ancestry	AFR,AMR,EAS,EUR,SAS
+European, African American, Hispanic, and other ancestry Schizophrenia	AFR,AMR,EUR
+European, African American, Hispanic, Asian, Pacific Islander and other ancestry	AFR,AMR,EAS,EUR,SAS
+European, African, African American, South East Asian, East Asian, American Indian/Alaskan Native, Mixed race, Arabic/North African, Central/South Asian or Japanese Asian ancestry treated	AFR,AMR,EAS,EUR,SAS
+European, African, African American, South East Asian, East Asian, American Indian/Alaskan Native, Mixed race, Arabic/North African, Central/South Asian or Japanese Asian ancestry untreated	AFR,AMR,EAS,EUR,SAS
+European, African, Asian, and Hispanic ancestry	AFR,AMR,EAS,EUR,SAS
+European, African, Hispanic and Asian ancestry	AFR,AMR,EAS,EUR,SAS
+European, African, Oceania, Hispanic	AFR,AMR,EUR
+European, Asian and unknown ancestry	EAS,EUR,SAS
+European, Asian, African, Arabic, Native American, Pacific Islander and other ancestry	AFR,AMR,EAS,EUR,SAS
+European, Black	AFR,EUR
+European, Black, and unknown ancestry	AFR,EUR
+European, Chinese and other ancestry	EAS,EUR
+European, Hispanic and African ancestry	AFR,AMR,EUR
+European, Hispanic and other ancestry	AMR,EUR
+European, Hispanic, African American, Asian, mixed race and other ancestry sustained response	AFR,AMR,EAS,EUR,SAS
+European, Hispanic, African American, Asian, mixed race and other ancestry unsustained response	AFR,AMR,EAS,EUR,SAS
+European, Hispanic, Asian, African or unknown ancestry	AFR,AMR,EAS,EUR,SAS
+European, Hispanic, Native American, African American, East Asian and other ancestry	AFR,AMR,EAS,EUR,SAS
+European, Hispanic, Native American, African American, East Asian and other ancestry trauma-exposed	AFR,AMR,EAS,EUR,SAS
+European, South Asian and Hispanic or Latin American ancestry	AMR,EUR,SAS
+European, South Asian, East Asian, African American/Afro-Caribbean, Hispanic and other ancestry	AFR,AMR,EAS,EUR,SAS
+Europen ancestry	EUR
+Fijian Indian	SAS
+Filipino	AMR,EAS,SAS
+Filipino ancestry	AMR,EAS,SAS
+Filipino ancestry female	AMR,EAS,SAS
+Finland founder	EUR
+Finnish ancestry	EUR
+Finnish ancestry child	EUR
+Finnish ancestry controls from 739	EUR
+Finnish ancestry controls from up to 739	EUR
+Finnish ancestry evening	EUR
+Finnish ancestry ever smoker individuals from 739	EUR
+Finnish ancestry ever smoker individuals from up to 739	EUR
+Finnish ancestry female non-severe erosion	EUR
+Finnish ancestry female severe erosion	EUR
+Finnish ancestry infant	EUR
+Finnish ancestry male non-severe erosion	EUR
+Finnish ancestry male severe erosion	EUR
+Finnish ancestry mild or no erosion	EUR
+Finnish ancestry morning	EUR
+Finnish ancestry non-diabetic	EUR
+Finnish ancestry severe erosion	EUR
+Finnish Saami	EUR
+French ancestry	EUR
+French ancestry estrogen receptor negative	EUR
+French ancestry estrogen receptor positive	EUR
+French Canadian	EUR
+French Canadian ancestry	EUR
+French Canadian founder	EUR
+French Canadian founder adolescent	EUR
+Friuli Venezia Giulia (founder/genetic isolate)	EUR
+Friuli Venezia Giulia (founder/genetic isolated)	EUR
+Fulani	AFR
+Gambian ancestry	AFR
+Genetically Homogenous Irish	EUR
+German ancestry	EUR
+German ancestry alcohol dependence	EUR
+Greater Middle Eastern ancestry	AFR,EUR,SAS
+Greek ancestry	EUR
+Greek ancestry schizophrenia	EUR
+Greek ancestry T2D	EUR
+Greenlandic ancestry	EUR
+Han Chinese	EAS
+Han Chinese American lymphoblastoid	EAS
+Han Chinese ancestry	EAS
+Han Chinese ancestry ACPA negative	EAS
+Han Chinese ancestry ACPA positive	EAS
+Han Chinese ancestry alcohol dependence	EAS
+Han Chinese ancestry asymptomatic	EAS
+Han Chinese ancestry centenarian	EAS
+Han Chinese ancestry child	EAS
+Han Chinese ancestry child or adolescent	EAS
+Han Chinese ancestry chronic HBV	EAS
+Han Chinese ancestry esophageal squamous-cell carcinoma	EAS
+Han Chinese ancestry extreme high and low BMD female	EAS
+Han Chinese ancestry female	EAS
+Han Chinese ancestry focal epilepsy	EAS
+Han Chinese ancestry HBV carrier	EAS
+Han Chinese ancestry HBV cleared	EAS
+Han Chinese ancestry HBV-positive HCC	EAS
+Han Chinese ancestry heroin dependence	EAS
+Han Chinese ancestry high myopia	EAS
+Han Chinese ancestry high-responder	EAS
+Han Chinese ancestry human lymphoblastoid	EAS
+Han Chinese ancestry hypertensive	EAS
+Han Chinese ancestry individuals with osteoporosis-related bone measure	EAS
+Han Chinese ancestry lung cancer	EAS
+Han Chinese ancestry lymphoblastoid	EAS
+Han Chinese ancestry male	EAS
+Han Chinese ancestry male gout	EAS
+Han Chinese ancestry methamphetamine dependence	EAS
+Han Chinese ancestry middle-age	EAS
+Han Chinese ancestry mild	EAS
+Han Chinese ancestry non-cardia gastric cancer	EAS
+Han Chinese ancestry non-diabetic	EAS
+Han Chinese ancestry non-responder	EAS
+Han Chinese ancestry non-smoker	EAS
+Han Chinese ancestry progressed	EAS
+Han Chinese ancestry responder	EAS
+Han Chinese ancestry schizophrenia	EAS
+Han Chinese ancestry seropositive	EAS
+Han Chinese ancestry severe	EAS
+Han Chinese ancestry smoker	EAS
+Han Chinese ancestry tolerant	EAS
+Han Chinese ancestry trichloroethylene-tolerant	EAS
+Han Chinese ancestry Type 2 diabetes	EAS
+Han Chinese ancestry young-onset-hypertensive	EAS
+Han Chinese and unknown ancestry	EAS
+Hispanic	AMR
+HIspanic	AMR
+Hispanic American	AMR
+Hispanic American abacavir-treated	AMR
+Hispanic American tenofovir-treated	AMR
+Hispanic ancestry	AMR
+Hispanic Ancestry	AMR
+Hispanic and other ancestry	AMR
+Hispanic and unknown ancestry	AMR
+Hispanic asthmatic	AMR
+Hispanic asymptomatic neurocognitive impairment	AMR
+Hispanic boy borderline NASH	AMR
+Hispanic boy definite NASH	AMR
+Hispanic Caucasian	AMR
+Hispanic child	AMR
+Hispanic children from 260	AMR
+Hispanic children from 263	AMR
+Hispanic controls,197 Brazilian ancestry	AMR
+Hispanic current	AMR
+Hispanic current smoker	AMR
+Hispanic ever	AMR
+Hispanic ever smoker	AMR
+Hispanic female	AMR
+Hispanic former and never	AMR
+Hispanic genotype 1 HCV	AMR
+Hispanic heavy smoker	AMR
+Hispanic incident	AMR
+Hispanic individuals, up to750 East Asian ancestry	AMR
+Hispanic light smoker	AMR
+Hispanic male	AMR
+Hispanic mild neurocognitive disorder	AMR
+Hispanic never	AMR
+Hispanic never smoker	AMR
+Hispanic newborn	AMR
+Hispanic non smoker	AMR
+Hispanic non-regular	AMR
+Hispanic or Latin American	AMR
+Hispanic or Latin American active	AMR
+Hispanic or Latin American ancestry	AMR
+Hispanic or Latin American drinkers and	AMR
+Hispanic or Latin American heavy	AMR
+Hispanic or Latin American heavy and light	AMR
+Hispanic or Latin American inactive	AMR
+Hispanic or Latin American light	AMR
+Hispanic or Latino ancestry	AMR
+Hispanic osteonecrosis	AMR
+Hispanic prevalent	AMR
+Hispanic regular	AMR
+Hispanic trauma-exposed and unexposed	AMR
+Hispanic treated	AMR
+Hispanic, European, Asian, South Asian or African American	AFR,AMR,EAS,EUR,SAS
+Hispanic/Latin American	AMR
+Hispanic/Latin American ancestry	AMR
+Hispanic/Latin American college graduated	AMR
+Hispanic/Latin American non-college graduated	AMR
+Hispanic/Latino	AMR
+Hispanic/Latino American	AMR
+Hispanic/Latino American exposed	AMR
+Hispanic/Latino American unexposed	AMR
+Hispanic/Latino ancestry	AMR
+Hispanic/Latino drinker	AMR
+Hispanic/Latino individuals with decayed, missing or filled tooth surface measure	AMR
+Hispanic/Latino non-drinker	AMR
+Hispanic/Native american	AMR
+Hispanic/Native American	AMR
+Hong Kong Chinese ancestry individuals from 111	EAS
+Hui Chinese ancestry	EAS
+Hutterite	EUR
+Hutterite (founder/genetic isolate) adult	EUR
+Icelandic	EUR
+Icelandic ancestry	EUR
+Icelandic ancestry controls (includes non-array genotyped, whole-genome imputed	EUR
+Icelandic ancestry controls (including non-array genotyped, whole genome imputed	EUR
+Icelandic controls (includes non-array genotyped, whole-genome imputed	EUR
+Indian ancestry	SAS
+Indian ancestry controls from 405	SAS
+Indian ancestry good responder	SAS
+Indian ancestry poor responder	SAS
+Indian Asian ancestry	SAS
+Indian Asian ancestry male	SAS
+Indo-European ancestry	EUR
+Indo-European Indian ancestry	EUR,SAS
+Indonesian ancestry	EAS
+Iranian ancestry	EUR,SAS
+Irish ancestry	EUR
+Israeli	EUR
+Israeli-Arab ancestry	EUR
+Italian ancestry	EUR
+Italian ancestry smoker	EUR
+Japanese	EAS
+Japanese American	EAS
+Japanese American ancestry current smoker	EAS
+Japanese ancestry	EAS
+Japanese ancestry 5-yr hepatocellular carcinoma-free	EAS
+Japanese ancestry active and inactive	EAS
+Japanese ancestry adolescent female	EAS
+Japanese ancestry adverse reaction	EAS
+Japanese ancestry AIS non-progression	EAS
+Japanese ancestry AIS progression	EAS
+Japanese ancestry APOE 4-	EAS
+Japanese ancestry APOE 4+	EAS
+Japanese ancestry APOE 4e+	EAS
+Japanese ancestry APOE-ε4 carrier	EAS
+Japanese ancestry APOE-ε4 noncarrier	EAS
+Japanese ancestry asthmatic	EAS
+Japanese ancestry asymptomatic carriers or chronic hepatitis	EAS
+Japanese ancestry bilateral	EAS
+Japanese ancestry cases schizophrenic	EAS
+Japanese ancestry cases,3,389 Japanese ancestry	EAS
+Japanese ancestry chronic hepatitis and hepatocellular carcinoma	EAS
+Japanese ancestry chronic hepatitis C with hepatocellular carcinoma	EAS
+Japanese ancestry chronic hepatitis C without hepatocellular carcinoma	EAS
+Japanese ancestry conrols	EAS
+Japanese ancestry Crohn's disease	EAS
+Japanese ancestry current smoker	EAS
+Japanese ancestry early age at menarche	EAS
+Japanese ancestry ever	EAS
+Japanese ancestry ever smoker	EAS
+Japanese ancestry female	EAS
+Japanese ancestry female curly hair	EAS
+Japanese ancestry female straight hair	EAS
+Japanese ancestry female thick eyebrow	EAS
+Japanese ancestry female thin eyebrow	EAS
+Japanese ancestry Graves’ disease	EAS
+Japanese ancestry Hashimoto thyroiditis	EAS
+Japanese ancestry healthy	EAS
+Japanese ancestry hepatocellular carcinoma	EAS
+Japanese ancestry high dose	EAS
+Japanese ancestry high responder	EAS
+Japanese ancestry intermediate responder	EAS
+Japanese ancestry intracerebral hemorrhage	EAS
+Japanese ancestry low dose	EAS
+Japanese ancestry low responder	EAS
+Japanese ancestry lymphoblastoid	EAS
+Japanese ancestry male	EAS
+Japanese ancestry male and female	EAS
+Japanese ancestry median age at menarche	EAS
+Japanese ancestry mild	EAS
+Japanese ancestry moderate	EAS
+Japanese ancestry never	EAS
+Japanese ancestry never smoker	EAS
+Japanese ancestry non-adverse reaction	EAS
+Japanese ancestry physically active	EAS
+Japanese ancestry physically inactive	EAS
+Japanese ancestry poor	EAS
+Japanese ancestry schizophrenia	EAS
+Japanese ancestry schizophrenic	EAS
+Japanese ancestry severe	EAS
+Japanese ancestry subarachnoid hemorrhage	EAS
+Japanese ancestry ulcerative colitis	EAS
+Japanese ancestry unilateral	EAS
+Japanese ancestry world-class	EAS
+Japaneses ancestry	EAS
+Jewish	EUR
+Jewish-Israeli ancestry	EUR
+Jewish-Israeli ancestry controls from 107	EUR
+Jingpo Chinese ancestry	EAS
+Kenyan ancestry	AFR
+Korcula (founder/genetic isolate)	EUR
+Korculan (founder/genetic isolate)	EUR
+Korculan (founder/genetic isolate), Split (founder/genetic isolate), Vis (founder/genetic isolate), Erasmus Rucphen (founder/genetic isolate) and other European ancestry	EUR
+Korculan (founder/genetic isolated)	EUR
+Korean	EAS
+Korean ancestry	EAS
+Korean ancestry ADHD child	EAS
+Korean ancestry adult	EAS
+Korean ancestry adult onset	EAS
+Korean ancestry anti-TPO	EAS
+Korean ancestry cases and	EAS
+Korean ancestry child	EAS
+Korean ancestry childhood onset	EAS
+Korean ancestry current	EAS
+Korean ancestry D.f.-negative	EAS
+Korean ancestry D.f.-positive	EAS
+Korean ancestry D.p.-negative	EAS
+Korean ancestry D.p.-positive	EAS
+Korean ancestry female	EAS
+Korean ancestry healthy	EAS
+Korean ancestry high BMI	EAS
+Korean ancestry high BMR	EAS
+Korean ancestry incident diabetes and non-diabetes	EAS
+Korean ancestry low BMI	EAS
+Korean ancestry low BMR	EAS
+Korean ancestry male	EAS
+Korean ancestry male cases and male	EAS
+Korean ancestry medication adherent diabetes	EAS
+Korean ancestry medication adherent hypertensive	EAS
+Korean ancestry medication non-adherent diabetes	EAS
+Korean ancestry medication non-adherent hypertensive	EAS
+Korean ancestry non-responder	EAS
+Korean ancestry non-So-Eum type	EAS
+Korean ancestry prevalent diabetes	EAS
+Korean ancestry responder	EAS
+Korean ancestry So-Eum type	EAS
+Latin American	AMR
+Latin American ancestry	AMR
+Latin-American	AMR
+Latino	AMR
+Latino American	AMR
+Latino American ancestry	AMR
+Latino American ancestry trauma-exposed	AMR
+Latino ancestry current smoker	AMR
+Latino and Native American ancestry	AMR
+Latino cases30,866 European ancestry	AMR,EUR
+Latino current smoker	AMR
+Latino female	AMR
+Latino male	AMR
+Latino or African	AFR,AMR
+Latino schizophrenia	AMR
+Lebanese ancestry	AFR,EUR,SAS
+Maghrebian	AFR
+Mainland Hispanic/Latino	AMR
+Malay ancestry	EAS
+Malaysian Chinese ancestry	EAS
+Maya ancestry	AMR
+Mediterranean	AFR,EUR
+Metropolitan French ancestry	EUR
+Mexican	AMR
+Mexican American	AMR
+Mexican American family members and	AMR
+Mexican American female	AMR
+Mexican American individuals from 20	AMR
+Mexican American individuals from 65	AMR
+Mexican American individuals from 96	AMR
+Mexican American intermittent carrier	AMR
+Mexican American male	AMR
+Mexican American non-carrier	AMR
+Mexican American persistent carrier	AMR
+Mexican Americans from 63	AMR
+Mexican ancestry	AMR
+Mexican ancestry diabetic	AMR
+Mexican ancestry high triglyceride	AMR
+Mexican ancestry hypertriglyceridemia	AMR
+Mexican ancestry low triglyceride	AMR
+Mexican and other Latin American ancestry	AMR
+Mexican-American	AMR
+Mexican-Mestizo ancestry	AMR
+Micronesian ancestry	EAS
+Middle Eastern ancestry	AFR,EUR,SAS
+Middle Eastern/North African ancestry	AFR,EUR,SAS
+middle-aged British	EUR
+Mongolian ancestry individuals from 55	EAS
+Moroccan ancestry	AFR
+Moroccan ancestry affected	AFR
+Moroccan ancestry unaffected	AFR
+Moroccan ancestry unaffected offspring from 135	AFR
+Mylopotamos (founder/genetic isolate)	EUR
+Native American	AMR
+Native American ancestry	AMR
+Native American ancestry-enriched North American	AMR
+Native American ancestry-enriched South American	AMR
+Native Hawaiian	AMR,EAS
+Native Hawaiian ancestry	AMR,EAS
+Native Hawaiian ancestry current smoker	AMR,EAS
+Native Hawaiian ancestry schizophrenia	AMR,EAS
+Native Hawaiian or Pacific Islander ancestry	AMR,EAS
+Nigerian ancestry	AFR
+non-aboriginal Taiwanese ancestry high Yu-Zhi score	EAS
+non-aboriginal Taiwanese ancestry low Yu-Zhi score	EAS
+non-African admixed Arab ancestry	EUR,SAS
+non-array typed, familial imputed Icelandic ancestry	EUR
+non-Hispanic black	AFR
+non-Hispanic white	EUR
+non-progressed eyes from 2,721 European ancestry	EUR
+non-progressed eyes from up to 2,721 European ancestry	EUR
+North Indian ancestry	SAS
+Northern European ancestry	EUR
+Northern European ancestry glioblastoma	EUR
+Northern European ancestry good prognosis	EUR
+Northern European ancestry non-glioblastoma	EUR
+Northern European ancestry poor prognosis	EUR
+Northern Finnish founder	EUR
+Northern Indian	SAS
+Northwestern European ancestry	EUR
+Norwegian ancestry	EUR
+Ogliastran (founder/genetic isolated)	EUR
+Old Order Amish	EUR
+Old Order Amish (founder/genetic isolate)	EUR
+Old Order Amish (founder/genetic isolate) female	EUR
+Old Order Amish female	EUR
+Old Order Amish individuals from 308	EUR
+Old Order Amish male	EUR
+Orcadian	EUR
+Orcadian (founder/genetic isolate)	EUR
+Orcadian (founder/genetic isolated)	EUR
+Oriental ancestry	EAS
+Pakistani ancestry	SAS
+Peruvian	AMR
+Pima Indian ancestry	AMR
+Polish ancestry	EUR
+Polish ancestry adult	EUR
+Polish ancestry child	EUR
+Pomak (founder/genetic isolate)	EUR
+Puerto Rican	AMR
+Puerto Rican adult	AMR
+Puerto Rican ancestry	AMR
+Puerto Rican ancestry child	AMR
+Puerto Rican child	AMR
+Punjabi Sikh ancestry	SAS
+Punjabi Sikh ancestry type 2 diabetes	SAS
+Quebec (founder/genetic isolate)	EUR
+Quebec (founder/genetic isolate) ancestry	EUR
+Quechua	AMR
+Romanian founder	EUR
+Russian ancestry female long endurance	EUR
+Russian ancestry male long endurance	EUR
+Russian ancestry middle and short endurance	EUR
+Samoan (founder/genetic isolate)	AMR,EAS,SAS
+Sardinian	EUR
+Sardinian (founder/genetic isolate)	EUR
+Sardinian founder	EUR
+Sardinian population isolate	EUR
+Saudi Arab ancestry	AFR,SAS
+Saudi Arabian ancestry	AFR,SAS
+Scandinavian ancestry	EUR
+Scandinavian ancestry bipolar disorder	EUR
+Scottish ancestry	EUR
+Scottish ancestry mild or no retinopathy	EUR
+Scottish ancestry proliferative or severe background retinopathy	EUR
+Sereer ancestry individuals from 130	AFR
+Silk Road	EAS,EUR,SAS
+Singaporean Chinese adult	EAS
+Singaporean Chinese ancestry	EAS
+Singaporean Chinese ancestry myocardial infarction	EAS
+Singaporean Chinese child	EAS
+Singaporean Han Chinese ancestry	EAS
+Slavic ancestry	EUR
+Solomon Islander ancestry blond haired	AMR,EAS,SAS
+Solomon Islander ancestry dark haired	AMR,EAS,SAS
+Sorbian (founder/genetic isolate)	EUR
+Sorbian ancestry	EUR
+South African Afrikaner ancestry	AFR
+South African Black	AFR
+South African coloured	AFR
+South African Coloured ancestry	AFR
+South Asian ancestry	SAS
+South Asian ancestry celiac disease	SAS
+South Asian ancestry high maxL*	SAS
+South Asian ancestry low maxL*	SAS
+South East Asian ancestry	EAS
+South Indian ancestry	SAS
+South Indian ancestry individuals from 15	SAS
+South Tyrol	EUR
+South Tyrolean	EUR
+South Tyrolean (founder/genetic isolate)	EUR
+Southern Chinese ancestry	EAS
+Southern European ancestry Crohn's disease	EUR
+Southern Han Chinese ancestry	EAS
+Southern Indian ancestry	SAS
+Spanish ancestry	EUR
+Spanish ancestry rheumatoid factor-negative	EUR
+Spanish ancestry rheumatoid factor-positive	EUR
+Spanish mediterranean ancestry	EUR
+Sri Lankan Sinhalese ancestry	SAS
+Sub-Saharan African	AFR
+Sub-saharan African ancestry	AFR
+Sub-Saharan African ancestry	AFR
+Sub-Saharan African ancestry lymphoblastoid	AFR
+Surinamese ancestry	AMR
+Swedish ancestry	EUR
+Swedish ancestry cervical cancer	EUR
+Swedish ancestry cervical intraepithelial neoplasia grade 3	EUR
+Swedish ancestry Lofgren's syndrome	EUR
+Swedish ancestry non-Lofgren's syndrome	EUR
+Taiwanese	EAS
+Taiwanese ancestry	EAS
+Taiwanese Han ancestry	EAS
+Taiwanese Han Chinese	EAS
+Taiwanese Han Chinese ancestry	EAS
+Talana (founder/genetic isolate)	EUR
+Tanzanian ancestry	AFR
+Thai	EAS
+Thai ancestry	EAS
+Thai ancestry nevirapine-induced rash HIV	EAS
+Thai ancestry nevirapine-tolerant rash HIV	EAS
+Thai-Chinese ancestry mild	EAS
+Thai-Chinese ancestry severe	EAS
+Tibetan (founder/genetic isolate)	EAS
+Tibetan ancestry	EAS
+Turkish	EUR
+Turkish ancestry	EUR
+Turkish ancestry child	EUR
+Turkish uveitis	EUR
+Turkish without uveitis	EUR
+Tyrolean (founder/genetic isolate)	EUR
+Ugandan ancestry	AFR
+Uyghur ancestry	EAS,EUR,SAS
+Uyghur ancestry female	EAS,EUR,SAS
+Uyghur ancestry male	EAS,EUR,SAS
+Uygur Chinese ancestry	EAS,EUR,SAS
+Val Borbera (founder/genetic isolate)	EUR
+Val Borbera (founder/genetic isolated)	EUR
+Venezuelan ancestry	AMR
+Vietnamese ancestry	EAS
+Vietnamese ancestry child	EAS
+Vietnamese-Korean ancestry individuals from 165	EAS
+West African	AFR
+West African ancestry male	AFR
+Western European ancestry	EUR
+White British ancestry	EAS
+whole exome sequenced European ancestry	EAS
+whole genome sequenced European ancestry	EAS
+Yoruban ancestry	AFR
+Yoruban ancestry cognitively normal	AFR
+Yoruban ancestry dementia	AFR
+Yoruban ancestry individuals,1,765 Filipino ancestry	AFR
