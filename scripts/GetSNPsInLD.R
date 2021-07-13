@@ -40,7 +40,7 @@ hg19_to_hg38_chain <- import.chain("assets/hg19ToHg38.over.chain")
 index_snp_table <- read_tsv(snakemake@input$gwas)
 # index_snps <- read_tsv("./data/raw/lib3_design/skin_disease_index_snps.txt")
 
-r2_threshold <- 0.8
+r2_threshold <- snakemake@config$r2_threshold
 
 all(str_detect(index_snp_table$SNPS, "^rs\\d+$") |
         str_detect(index_snp_table$SNPS, "^chr[0-9XY]+:\\d+$"))
