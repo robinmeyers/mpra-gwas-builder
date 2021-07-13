@@ -251,7 +251,7 @@ dir.create(out_dir_haploreg, showWarnings = F, recursive = T)
 haploreg_results <- snps_to_query %>%
     filter(pop %in% names(haploreg_pops)) %>%
     mutate(pop = haploreg_pops[pop]) %>%
-    group_by(pop) %>% summarise(index_snps = list(index_snp)) %>%
+    group_by(pop) %>% summarise(index_snps = list(sample(index_snp))) %>%
     mutate(haploreg_results = map2(index_snps, pop, query_haploreg, force = T, out_dir = out_dir_haploreg, r2 = r2_threshold))
 
 haploreg_results_table <- haploreg_results %>% select(haploreg_results) %>%
