@@ -239,13 +239,18 @@ write_tsv(ldlink_results_table, "outs/ldlink_full_results.txt")
 
 
 
-haploreg_pops <- c("EUR", "AFR", "AMR", "ASN")
+haploreg_pops <- c("AFR" = "AFR",
+                   "AMR" = "AMR",
+                   "EAS" = "ASN",
+                   "EUR" = "EUR",
+                   "SAS" = "ASN")
 
 out_dir_haploreg <- "outs/SNPS_HaploReg"
 dir.create(out_dir_haploreg, showWarnings = F, recursive = T)
 
 haploreg_results <- snps_to_query %>%
-    filter(pop %in% haploreg_pops) %>%
+    filter(pop %in% names(haploreg_pops)) %>%
+    mutate(pop = haploreg_pops[pop]) %>%
     group_by(pop) %>% summarise(index_snps = list(index_snp)) %>%
     mutate(haploreg_results = map2(index_snps, pop, query_haploreg, force = T, out_dir = out_dir_haploreg, r2 = r2_threshold))
 
