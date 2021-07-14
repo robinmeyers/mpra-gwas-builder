@@ -39,7 +39,8 @@ hg19_to_hg38_chain <- import.chain("assets/hg19ToHg38.over.chain")
 #     do_parallel <- F
 # }
 
-index_snp_table <- read_tsv(snakemake@input$gwas)
+index_snp_table <- read_tsv(snakemake@input$gwas,
+                            col_types = cols(.default = col_character()), quote = "")
 # index_snps <- read_tsv("./data/raw/lib3_design/skin_disease_index_snps.txt")
 
 r2_threshold <- snakemake@config$r2_threshold
@@ -184,56 +185,59 @@ if (!is.null(snakemake@config$gwas_pop_key)) {
 
     sample_terms <- index_snps_cleaned %>%
         distinct(pubmed, sample) %>%
-        mutate(sample = str_split(sample, split_regex)) %>%
-        unnest(sample)
+        mutate(split_sample = str_split(sample, split_regex)) %>%
+        unnest(split_sample)
 
 
     full_matches <- bind_cols(sample_terms,
-                              str_match(sample_terms$sample, full_regex) %>%
+                              str_match(sample_terms$split_sample, full_regex) %>%
                                   set_colnames(c("match", "number", "capture", "type")) %>%
                                   as_tibble())
 
     study_key_table <- full_matches %>%
-        distinct(pubmed, capture) %>%
+        distinct(pubmed, sample, split_sample, capture) %>%
         rename(term = capture) %>%
-        left_join(gwas_pop_key)
+        left_join(gwas_pop_key) %>%
+        filter(!is.na(code))
 
     index_snps_pop_match <- index_snps_cleaned %>%
-        left_join(study_key_table %>%
-                      mutate(pop = str_split(code, ",")) %>%
-                      unnest(pop) %>% distinct(pubmed, pop))
-
-
-    index_snps_pop_match_summary <- index_snps_pop_match %>%
+        left_join(study_key_table) %>%
+        distinct() %>%
         group_by(disease, gwas_snp, index_snp, coord_b38, coord_b37, pubmed, sample) %>%
-        summarise(pops = paste0(sort(pop), collapse=","))
+        summarise(pops = paste0(sort(unique(unlist(str_split(code, ",")))), collapse = ",")) %>%
+        ungroup()
 
 
-    write_tsv(index_snps_pop_match_summary, "outs/gwas_study_index_snps_matched_populations.tsv")
+    write_tsv(index_snps_pop_match, "outs/gwas_study_index_snps_matched_populations.tsv")
 
-    index_snps_pop_match_summary %>%
-        distinct(disease, pubmed, sample, pops) %>%
+    index_snps_pop_match %>%
+        group_by(disease, pubmed, sample, pops) %>%
+        summarise(n_snps = n_distinct(index_snp, na.rm = T)) %>%
         write_tsv("outs/gwas_study_matched_populations.tsv")
 
 
 } else {
-    index_snps_pop_match <- tibble(index_snp = c(), pop = c())
+    index_snps_pop_match <- tibble(disease = c(), pubmed = c(), sample = c(), index_snp = c(), pops = c())
 }
 
 max_pops <- snakemake@config$max_pops
 
-index_snps_pop_all <- crossing(index_snp = index_snps_cleaned$index_snp,
+index_snps_pop_match_filtered <- index_snps_pop_match %>%
+    filter(!is.na(pops) & pops != "") %>%
+    filter(map_lgl(str_split(pops, ","), ~ length(.) <= max_pops))
+
+
+index_snps_pop_all <- crossing(index_snp = unique(index_snps_cleaned$index_snp),
                                pop = pops) %>%
-    bind_rows(index_snps_pop_match %>%
-                  group_by(index_snp) %>%
-                  filter(n_distinct(pop, na.rm=T) <= max_pops) %>%
-                  ungroup() %>%
+    bind_rows(index_snps_pop_match_filtered %>%
+                  mutate(pop = str_split(pops, ",")) %>%
+                  unnest(pop) %>%
                   distinct(index_snp, pop))
 
 
 snps_to_query <- index_snps_pop_all %>%
     filter(str_detect(index_snp, "rs\\d+"),
-           !is.na(pop))
+           !is.na(pop) & pop != "")
 
 out_dir <- "outs/SNPS_LDlink"
 
