@@ -217,10 +217,15 @@ if (!is.null(snakemake@config$gwas_pop_key)) {
 
 
 } else {
-    index_snps_pop_match <- tibble(disease = c(), pubmed = c(), sample = c(), index_snp = c(), pops = c())
+    index_snps_pop_match <- tibble(disease = character(),
+                                   pubmed = character(),
+                                   sample = character(),
+                                   index_snp = character(),
+                                   pops = character())
 }
 
 max_pops <- snakemake@config$max_pops
+
 
 index_snps_pop_match_filtered <- index_snps_pop_match %>%
     filter(!is.na(pops) & pops != "") %>%
@@ -270,10 +275,25 @@ haploreg_results <- snps_to_query %>%
     group_by(pop) %>% summarise(index_snps = list(sample(index_snp))) %>%
     mutate(haploreg_results = map2(index_snps, pop, query_haploreg, force = T, out_dir = out_dir_haploreg, r2 = r2_threshold))
 
-haploreg_results_table <- haploreg_results %>% select(haploreg_results) %>%
-    unnest(haploreg_results) %>%
-    select(index_snp = query_snp_rsid, pop = Population, everything()) %>%
-    filter(r2 >= r2_threshold)
+if (nrow(haploreg_results) > 0) {
+    haploreg_results_table <- haploreg_results %>% select(haploreg_results) %>%
+        unnest(haploreg_results) %>%
+        select(index_snp = query_snp_rsid, pop = Population, everything()) %>%
+        filter(r2 >= r2_threshold)
+} else {
+    haploreg_results_table <- tibble(
+        index_snp = character(),
+        pop = character(),
+        chr = character(),
+        pos_hg38 = character(),
+        r2 = double(),
+        D = double(),
+        is_query_snp = double(),
+        rsID = character(),
+        ref = character(),
+        alt = character()
+    )
+}
 
 write_tsv(haploreg_results_table, "outs/haploreg_full_results.txt")
 
@@ -344,7 +364,7 @@ haploreg_snps_find_locs_combined <- bind_rows(
 
 haploreg_snps_b38 <- haploreg_snps %>%
     left_join(haploreg_snps_find_locs_combined) %>%
-    mutate(coord_b38 = ifelse(is.na(coord_b38), coord_b38_rescue, coord_b38)) %>%
+    mutate(coord_b38 = as.character(ifelse(is.na(coord_b38), coord_b38_rescue, coord_b38))) %>%
     select(-coord_b38_rescue) %>%
     distinct()
 
