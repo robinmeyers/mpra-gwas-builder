@@ -204,12 +204,14 @@ if (!is.null(snakemake@config$gwas_pop_key)) {
                       unnest(pop) %>% distinct(pubmed, pop))
 
 
-    index_snps_pop_match %>%
+    index_snps_pop_match_summary <- index_snps_pop_match %>%
         group_by(disease, gwas_snp, index_snp, coord_b38, coord_b37, pubmed, sample) %>%
-        summarise(pops = paste0(sort(pop), collapse=",")) %>%
-        write_tsv("outs/gwas_study_index_snps_matched_populations.tsv")
+        summarise(pops = paste0(sort(pop), collapse=","))
 
-    index_snps_pop_match %>%
+
+    write_tsv(index_snps_pop_match_summary, "outs/gwas_study_index_snps_matched_populations.tsv")
+
+    index_snps_pop_match_summary %>%
         distinct(disease, pubmed, sample, pops) %>%
         write_tsv("outs/gwas_study_matched_populations.tsv")
 
