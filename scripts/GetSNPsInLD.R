@@ -25,6 +25,8 @@ library(tidyverse)
 
 source("lib/helpers.R")
 
+set.seed(snakemake@config$seed)
+
 hg19_to_hg38_chain <- import.chain("assets/hg19ToHg38.over.chain")
 
 # threads <- 4

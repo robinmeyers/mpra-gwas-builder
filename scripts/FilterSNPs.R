@@ -6,6 +6,8 @@ sink(log, type = "output")
 
 library(tidyverse)
 
+set.seed(snakemake@config$seed)
+
 snps_epigenome <- read_tsv(snakemake@input$epigenome)
 
 if (!is.null(snakemake@config$txdb_filters)) {

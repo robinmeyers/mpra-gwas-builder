@@ -22,6 +22,8 @@ library(rtracklayer)
 library(plyranges)
 library(tidyverse)
 
+set.seed(snakemake@config$seed)
+
 ## Load data
 # ldlink_full_results <- read_tsv("./data/raw/lib3_design/ldlink_full_results.txt")
 # haploreg_full_results <- read_tsv("./data/raw/lib3_design/haploreg_full_results.txt")
