@@ -28,7 +28,7 @@
 # }
 
 query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = T) {
-    out_file <- file.path(out_dir, paste0(pop, "_",
+    out_file <- file.path(out_dir, paste0(pop, "_", r2, "_",
                                           str_replace(snp, ":", "-"), ".txt"))
 
 
@@ -69,7 +69,7 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
 
 query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size = 1000) {
     cat(pop, "\n")
-    out_file <- file.path(out_dir, paste0(pop, "_haploreg.tsv"))
+    out_file <- file.path(out_dir, paste0(pop, "_", r2, "_haploreg.tsv"))
 
     if (file.exists(out_file) && !force) {
         haploreg_results <- read_tsv(out_file, col_types = cols(chr = col_character()))

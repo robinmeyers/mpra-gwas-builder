@@ -44,6 +44,7 @@ index_snp_table <- read_tsv(snakemake@input$gwas,
 # index_snps <- read_tsv("./data/raw/lib3_design/skin_disease_index_snps.txt")
 
 r2_threshold <- snakemake@config$r2_threshold
+r2_threshold_pop_specific <- snakemake@config$r2_threshold_pop_spec
 
 all(str_detect(index_snp_table$SNPS, "^rs\\d+$") |
         str_detect(index_snp_table$SNPS, "^chr[0-9XY]+:\\d+$"))
@@ -242,23 +243,23 @@ index_snps_pop_all <- crossing(index_snp = unique(index_snps_cleaned$index_snp),
 
 snps_to_query <- index_snps_pop_all %>%
     filter(str_detect(index_snp, "rs\\d+"),
-           !is.na(pop) & pop != "")
+           !is.na(pop) & pop != "") %>%
+    mutate(r2_threshold = ifelse(is.null(r2_threshold_pop_specific) | pop == "ALL",
+                                 r2_threshold, r2_threshold_pop_specific))
 
 out_dir <- "outs/SNPS_LDlink"
 
 dir.create(out_dir, showWarnings = F, recursive = T)
 
 ldlink_results <- snps_to_query %>%
-    mutate(ldlink_results = map2(index_snp, pop, query_ldlink, out_dir = out_dir, r2 = r2_threshold, retry_errors = snakemake@config$retry_errors))
+    mutate(ldlink_results = pmap(list(index_snp, pop, r2_threshold),
+        ~ query_ldlink(snp = ..1, pop = ..2, r2 = ..3, out_dir = out_dir, retry_errors = snakemake@config$retry_errors)))
 
 ldlink_results_table <- ldlink_results %>%
     unnest(ldlink_results) %>%
     filter(R2 >= r2_threshold)
 
 write_tsv(ldlink_results_table, "outs/ldlink_full_results.txt")
-
-
-
 
 haploreg_pops <- c("AFR" = "AFR",
                    "AMR" = "AMR",
@@ -272,13 +273,17 @@ dir.create(out_dir_haploreg, showWarnings = F, recursive = T)
 haploreg_results <- snps_to_query %>%
     filter(pop %in% names(haploreg_pops)) %>%
     mutate(pop = haploreg_pops[pop]) %>%
-    group_by(pop) %>% summarise(index_snps = list(sample(index_snp))) %>%
-    mutate(haploreg_results = map2(index_snps, pop, query_haploreg, force = T, out_dir = out_dir_haploreg, r2 = r2_threshold))
+    group_by(pop, r2_threshold) %>% summarise(index_snps = list(sample(index_snp))) %>%
+    mutate(haploreg_results = pmap(list(index_snps, pop, r2_threshold),
+        ~ query_haploreg(snps = ..1, pop = ..2, r2 = ..3,
+                        force = T, out_dir = out_dir_haploreg))) %>%
+    ungroup()
 
 if (nrow(haploreg_results) > 0) {
-    haploreg_results_table <- haploreg_results %>% select(haploreg_results) %>%
+    haploreg_results_table <- haploreg_results %>%
+        select(pop, r2_threshold, haploreg_results) %>%
         unnest(haploreg_results) %>%
-        select(index_snp = query_snp_rsid, pop = Population, everything()) %>%
+        select(index_snp = query_snp_rsid, everything()) %>%
         filter(r2 >= r2_threshold)
 } else {
     haploreg_results_table <- tibble(
