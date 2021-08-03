@@ -28,15 +28,23 @@
 # }
 
 query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = T) {
+
+    snp_fileformat <- str_replace(snp, ":", "-")
     out_file <- file.path(out_dir, paste0(pop, "_", r2, "_",
-                                          str_replace(snp, ":", "-"), ".txt"))
+                                          snp_fileformat, ".txt"))
 
+    potential_files <- list.files(out_dir, pattern = paste0(pop, "_[\\.0-9]+_", snp_fileformat, ".txt"))
+    potential_files_r2 <- str_match(potential_files, paste0(pop, "_([\\.0-9]+)_", snp_fileformat))[,2] %>% as.numeric()
 
-    if (file.exists(out_file) && !force) {
-        results <- read_tsv(out_file, col_types = cols())
+    potential_file <- file.path(out_dir, potential_files[which.min(potential_files_r2)])
+    potential_file_r2 <- potential_files_r2[which.min(potential_files_r2)]
+
+    if (length(potential_file) > 0 && potential_file_r2 <= r2 && !force) {
+        results <- read_tsv(potential_file, col_types = cols())
 
         if ("RS_Number" %in% colnames(results)) {
             results %>%
+                filter(R2 >= r2) %>%
                 mutate(RegulomeDB = as.character(RegulomeDB)) %>%
                 return()
 
