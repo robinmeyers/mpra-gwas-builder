@@ -30,11 +30,14 @@ stuffer_gc <- snakemake@config$cloning_site$stuffer_GC
 
 cloning_site_length <- str_length(cloning_site_1) + stuffer_bp + str_length(cloning_site_2)
 
+barcodes_per_frag <- snakemake@config$bc_per_frag
+
 bc_length <- snakemake@config$oligo$bc_len
 
 max_indel_size <- snakemake@config$oligo$max_indel
 
 random_control_n <- snakemake@config$random_controls
+random_control_w_mut_n <- snakemake@config$random_controls_with_mutation
 
 wiggle_room <- max_indel_size + 1
 
@@ -254,26 +257,19 @@ fragments_final <- combined_fragments_corrected %>% ungroup() %>%
                             paste0('fragment-', str_pad(fragment, width = 4, pad = 0), "_", "haplotype-", haplotype)))
 
 
-
-
 random_controls <- fragments_final %>% filter(!is.na(variant)) %>%
     distinct(seq) %>%
-    sample_n(random_control_n*2, replace = random_control_n*2 > nrow(.)) %>%
+    # sample_n(random_control_n*2, replace = random_control_n*2 > nrow(.)) %>%
     mutate(fragment_initial = row_number(),
            GC = str_count(seq, "[GC]")/str_length(seq),
            shuffle_seq = map_chr(seq, ~ str_split(., "") %>% unlist %>% sample() %>% str_c(collapse = "")),
            shuffle_GC = str_count(shuffle_seq, "[GC]")/str_length(shuffle_seq),
            pos = floor((str_length(shuffle_seq) + 1)/2),
            ref = str_sub(shuffle_seq, pos, pos),
-           alt = map2_chr(shuffle_seq, ref, ~ str_split(.x, "") %>% unlist %>% str_subset(.y, negate = T) %>% sample(1)))
-
-
-random_controls_allele <- random_controls %>% mutate(allele = map2(ref, alt, ~ c(.x, .y))) %>% unnest(allele) %>%
-    mutate(var_seq = pmap_chr(.,
-                              function(shuffle_seq, pos, ref, allele, ...) {
-                                  mutate_fragments(shuffle_seq, pos, ref, allele)
-                              })) %>%
-    mutate(variant = ifelse(allele == ref, "ref", "alt")) %>%
+           alt = ref) %>%
+    mutate(variant = map2("ref", "alt", ~ c(.x, .y))) %>% unnest(variant) %>%
+    mutate(allele = ifelse(variant == "ref", ref, alt)) %>%
+    mutate(var_seq = shuffle_seq) %>%
     mutate(var_seq_flanks  = paste0(str_sub(primer_5p, - flank_width),
                                     var_seq,
                                     str_sub(cloning_site_1, 1, flank_width))) %>%
@@ -285,17 +281,52 @@ random_controls_allele <- random_controls %>% mutate(allele = map2(ref, alt, ~ c
         }) %>% nrow %>% is_greater_than(0)
     })) %>% group_by(seq) %>%
     filter(!any(re_matches)) %>%
-    ungroup() %>%
+    ungroup()
+
+
+random_controls_w_mut <- fragments_final %>% filter(!is.na(variant)) %>%
+    distinct(seq) %>%
+    # sample_n(random_control_w_mut_n*2, replace = random_control_w_mut_n*2 > nrow(.)) %>%
+    mutate(fragment_initial = row_number(),
+           GC = str_count(seq, "[GC]")/str_length(seq),
+           shuffle_seq = map_chr(seq, ~ str_split(., "") %>% unlist %>% sample() %>% str_c(collapse = "")),
+           shuffle_GC = str_count(shuffle_seq, "[GC]")/str_length(shuffle_seq),
+           pos = floor((str_length(shuffle_seq) + 1)/2),
+           ref = str_sub(shuffle_seq, pos, pos),
+           alt = map2_chr(shuffle_seq, ref, ~ str_split(.x, "") %>% unlist %>% str_subset(.y, negate = T) %>% sample(1))) %>%
+    mutate(variant = map2("ref", "alt", ~ c(.x, .y))) %>% unnest(variant) %>%
+    mutate(allele = ifelse(variant == "ref", ref, alt)) %>%
+    mutate(var_seq = pmap_chr(.,
+                              function(shuffle_seq, pos, ref, allele, ...) {
+                                  mutate_fragments(shuffle_seq, pos, ref, allele)
+                              })) %>%
+    mutate(var_seq_flanks  = paste0(str_sub(primer_5p, - flank_width),
+                                    var_seq,
+                                    str_sub(cloning_site_1, 1, flank_width))) %>%
+    ungroup %>%
+    mutate(re_matches = map_lgl(var_seq_flanks, function(x) {
+        map_dfr(names(re_seqs), function(re_name) {
+            vmatchPattern(re_seqs[[re_name]], x)[[1]] %>%
+                as.data.frame() %>% mutate(RE = re_name)
+        }) %>% nrow %>% is_greater_than(0)
+    })) %>% group_by(seq) %>%
+    filter(!any(re_matches)) %>%
+    ungroup()
+
+
+random_controls_sample <- random_controls %>%
     filter(fragment_initial %in% sample(unique(fragment_initial), random_control_n)) %>%
     mutate(fragment = dense_rank(fragment_initial)) %>%
     mutate(frag_id = paste0('randomfragment-', str_pad(fragment, width = 4, pad = 0), "_", "allele-", variant))
 
+random_controls_w_mut_sample <- random_controls_w_mut %>%
+    filter(fragment_initial %in% sample(unique(fragment_initial), random_control_w_mut_n)) %>%
+    mutate(fragment = dense_rank(fragment_initial)) %>%
+    mutate(frag_id = paste0('randomfragmentmut-', str_pad(fragment, width = 4, pad = 0), "_", "allele-", variant))
 
-
+random_controls_allele  <- bind_rows(random_controls_sample, random_controls_w_mut_sample)
 
 total_frags <- nrow(fragments_final) + nrow(random_controls_allele)
-barcodes_per_frag <- 10
-
 
 barcode_df <- read_tsv(snakemake@config$barcodes, col_names = F) %>%
     set_colnames("barcode") %>%
@@ -315,8 +346,9 @@ barcode_lib <- barcode_df %>%
 
 
 
-barcoded_library <- bind_rows(fragments_final %>% select(frag_id, frag_seq = var_seq_corrected),
-          random_controls_allele %>% select(frag_id, frag_seq = var_seq)) %>%
+barcoded_library <-
+    bind_rows(fragments_final %>% select(frag_id, frag_seq = var_seq_corrected),
+              random_controls_allele %>% select(frag_id, frag_seq = var_seq)) %>%
     mutate(barcode = barcode_lib) %>%
     unnest(barcode) %>%
     group_by(frag_id) %>%
@@ -366,12 +398,50 @@ final_library <- barcoded_library %>%
     mutate(oligo_id = paste0(frag_id, "_barcode-", str_pad(barcode_id, width = 2, pad = 0)),
            oligo = paste0(primer_5p, frag_seq, cloning_site_1, stuffer, cloning_site_2, barcode, primer_3p))
 
+n_libraries <- 1
+
+if (n_libraries > 1) {
+
+    final_library <- final_library %>%
+        mutate(frag_pair_id = str_extract(frag_id, "^fragment-\\d+"))
+
+    sub_libraries <- final_library %>%
+        filter(!is.na(frag_pair_id)) %>%
+        distinct(frag_pair_id) %>%
+        mutate(sub_library = sample(row_number() %% n_libraries) + 1) %>%
+        left_join(final_library %>% filter(!is.na(frag_pair_id)))
+
+    random_controls_sub <- final_library %>%
+        filter(str_detect(frag_id, "^randomfragment"))
+
+    sub_libraries <- sub_libraries %>%
+        group_by(sub_library) %>% group_nest() %>%
+        mutate(data = map(data, ~ bind_rows(., random_controls_sub)))
+
+
+    walk2(sub_libraries$data, sub_libraries$sub_library,
+          ~ .x %>% select(oligo_id, oligo) %>%
+              write_csv(str_replace(snakemake@output$oligos, "\\.csv",
+                                    paste0("_sublib-", .y, ".csv"))))
+
+
+    walk2(sub_libraries$data, sub_libraries$sub_library,
+          ~ .x %>% select(oligo_id, barcode) %>%
+              write_csv(str_replace(snakemake@output$barcode_ref, "\\.csv",
+                                    paste0("_sublib-", .y, ".csv"))))
+
+}
 
 final_library %>% select(oligo_id, oligo) %>%
     write_csv(snakemake@output$oligo)
 
 final_library %>% select(oligo_id, barcode) %>%
     write_csv(snakemake@output$barcode_ref)
+
+
+
+
+
 
 variant_final <- fragments_final %>% filter(!is.na(variant)) %>% unnest(data) %>%
     select(fragment, variant, snp, chr, pos, allele, ref, alt,

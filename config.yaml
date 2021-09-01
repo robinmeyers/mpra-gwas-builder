@@ -83,9 +83,11 @@ eqtls:
 
 
 barcodes: assets/barcodes16-1.txt
+bc_per_frag: 10
 
 # how many scramble control pairs
 random_controls: 250
+random_controls_with_mutation: 250
 
 # Options for building the oligos
 oligo:
