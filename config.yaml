@@ -82,6 +82,8 @@ eqtls:
       filter: false
 
 
+sub_libraries: 1
+
 barcodes: assets/barcodes16-1.txt
 bc_per_frag: 10
 

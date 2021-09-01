@@ -15,6 +15,8 @@ source("lib/helpers.R")
 
 set.seed(snakemake@config$seed)
 
+n_sub_libraries <- snakemake@config$sub_libraries
+
 max_oligo_length <- snakemake@config$oligo$max_len
 
 re_seqs <- DNAStringSet(unlist(snakemake@config$restriction_enzymes))
@@ -398,9 +400,9 @@ final_library <- barcoded_library %>%
     mutate(oligo_id = paste0(frag_id, "_barcode-", str_pad(barcode_id, width = 2, pad = 0)),
            oligo = paste0(primer_5p, frag_seq, cloning_site_1, stuffer, cloning_site_2, barcode, primer_3p))
 
-n_libraries <- 1
 
-if (n_libraries > 1) {
+
+if (n_sub_libraries > 1) {
 
     final_library <- final_library %>%
         mutate(frag_pair_id = str_extract(frag_id, "^fragment-\\d+"))
@@ -408,7 +410,7 @@ if (n_libraries > 1) {
     sub_libraries <- final_library %>%
         filter(!is.na(frag_pair_id)) %>%
         distinct(frag_pair_id) %>%
-        mutate(sub_library = sample(row_number() %% n_libraries) + 1) %>%
+        mutate(sub_library = sample(row_number() %% n_sub_libraries) + 1) %>%
         left_join(final_library %>% filter(!is.na(frag_pair_id)))
 
     random_controls_sub <- final_library %>%
