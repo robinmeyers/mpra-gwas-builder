@@ -12,6 +12,12 @@ disease_list <-  read_tsv(snakemake@config$disease_list)
 gwas_catalog <- read_tsv(snakemake@config$gwas_catalog,
     col_types = cols(.default = col_character()), quote = "")
 
+if (!is.null(snakemake@config$gwas_trait_key)) {
+    gwas_trait_key <- snakemake@config$gwas_trait_key
+} else {
+    gwas_trait_key <- "DISEASE/TRAIT"
+}
+
 if (!is.null(snakemake@config$extra_gwas) && snakemake@config$extra_gwas != "") {
     extra_gwas <- read_tsv(snakemake@config$extra_gwas,
         col_types = cols(.default = col_character()), quote = "")
@@ -21,11 +27,11 @@ if (!is.null(snakemake@config$extra_gwas) && snakemake@config$extra_gwas != "") 
 
 
 gwas_index_snps <- gwas_catalog %>%
-    filter(`DISEASE/TRAIT` %in% disease_list$GWAS_term,
+    filter(.data[[gwas_trait_key]] %in% disease_list$GWAS_term,
            as.numeric(`P-VALUE`) <= as.numeric(snakemake@config$gwas_pvalue_threshold)) %>%
     filter(str_detect(SNPS, "rs\\d+ x rs\\d+", negate = T)) %>%
     bind_rows(extra_gwas) %>%
-    left_join(disease_list, by = c("DISEASE/TRAIT" = "GWAS_term"))
+    left_join(disease_list, by = set_names("GWAS_term", gwas_trait_key))
 
 
 gwas_snps_rsID <- gwas_index_snps %>%

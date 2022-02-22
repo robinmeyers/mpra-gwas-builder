@@ -3,6 +3,7 @@ study: skin_disease
 
 # File downloaded from GWAS catalog
 gwas_catalog: assets/gwas_catalog_v1.0-associations_e100_r2021-04-20.tsv
+gwas_trait_key: "DISEASE/TRAIT"
 
 # Disease column with (optionally simplified) disease terms
 # GWAS_term column with terms that must exactly match DISEASE/TRAIT column in catalog
