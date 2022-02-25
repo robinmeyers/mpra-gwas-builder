@@ -86,7 +86,7 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
     return(filtered_results)
 }
 
-query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size = 1000) {
+query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size = 100) {
     cat(pop, "\n")
     out_file <- file.path(out_dir, paste0(pop, "_", r2, "_haploreg.tsv"))
 
@@ -100,9 +100,12 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
 
     haploreg_results <-
         map_dfr(snps_chunked,
-            ~ queryHaploreg(., ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
-                mutate(Population = pop,
-                       chr = as.character(chr)))
+                function(chunk) {
+                    cat("querying chunk\n")
+                    queryHaploreg(chunk, ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
+                        mutate(Population = pop,
+                               chr = as.character(chr))
+                })
     write_tsv(haploreg_results, out_file)
     return(haploreg_results)
 }
