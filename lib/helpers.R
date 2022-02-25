@@ -45,13 +45,15 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
         if ("RS_Number" %in% colnames(results)) {
             results %>%
                 filter(R2 >= r2) %>%
-                mutate(RegulomeDB = as.character(RegulomeDB)) %>%
+                mutate(RegulomeDB = as.character(RegulomeDB),
+                       MAF = as.numeric(MAF)) %>%
                 return()
 
         }
 
         if (!retry_errors) {
-            return(results %>% mutate(RegulomeDB = NA_character_))
+            return(results %>% mutate(RegulomeDB = NA_character_,
+                                      MAF = NA_real_))
         }
 
     }
