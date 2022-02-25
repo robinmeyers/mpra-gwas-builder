@@ -47,7 +47,9 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
                 filter(R2 >= r2) %>%
                 mutate(RegulomeDB = as.character(RegulomeDB),
                        MAF = as.numeric(MAF),
-                       Distance = as.numeric(Distance)) %>%
+                       Distance = as.numeric(Distance),
+                       Dprime = as.numeric(Dprime),
+                       R2 = as.numeric(R2)) %>%
                 return()
 
         }
@@ -55,7 +57,9 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
         if (!retry_errors) {
             return(results %>% mutate(RegulomeDB = NA_character_,
                                       MAF = NA_real_,
-                                      Distance = NA_real_))
+                                      Distance = NA_real_,
+                                      Dprime = NA_real_,
+                                      R2 = NA_real_))
         }
 
     }
@@ -75,7 +79,8 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
         mutate(RS_Number = as.character(RS_Number),
                RegulomeDB = as.character(RegulomeDB),
                MAF = as.numeric(MAF),
-               Distance = as.numeric(Distance))
+               Distance = as.numeric(Distance),
+               R2 = as.numeric(R2))
 
     write_tsv(filtered_results, out_file)
     return(filtered_results)
