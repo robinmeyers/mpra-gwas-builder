@@ -37,6 +37,9 @@ pops:
 # This will cause the pipeline to re-run slower. 
 retry_errors: false
 
+# comment out to not use
+gtex_table: ~/data/GTEx/GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz
+
 # random number seed
 seed: 1234
 

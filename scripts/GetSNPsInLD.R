@@ -349,15 +349,19 @@ haploreg_snps_find_locs_b38_xtra <- snpsById(XtraSNPlocs.Hsapiens.dbSNP141.GRCh3
     select(chr, pos_b38 = start, snp = RefSNP_id)
 
 
+if (!is.null(snakemake@config$gtex_table)) {
+    gtex_var_map <- read_tsv(snakemake@config$gtex_table,
+                             col_types = "c-----cc") %>%
+        dplyr::rename(rs_id = "rs_id_dbSNP151_GRCh38p7")
 
-gtex_var_map <- read_tsv("~/data/GTEx/GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz",
-                         col_types = "c-----cc") %>%
-    dplyr::rename(rs_id = "rs_id_dbSNP151_GRCh38p7")
+    haploreg_snps_find_locs_gtex <- gtex_var_map %>% filter(rs_id %in% haploreg_snps_no_coord) %>%
+        extract(variant_id, c("chr", "pos_b38"), "^chr([0-9XY]+)_(\\d+)") %>%
+        mutate(pos_b38 = as.numeric(pos_b38)) %>%
+        select(chr, pos_b38, snp = rs_id)
+} else {
+    haploreg_snps_find_locs_gtex <- tibble()
+}
 
-haploreg_snps_find_locs_gtex <- gtex_var_map %>% filter(rs_id %in% haploreg_snps_no_coord) %>%
-    extract(variant_id, c("chr", "pos_b38"), "^chr([0-9XY]+)_(\\d+)") %>%
-    mutate(pos_b38 = as.numeric(pos_b38)) %>%
-    select(chr, pos_b38, snp = rs_id)
 
 haploreg_snps_find_locs_combined <- bind_rows(
     haploreg_snps_find_locs_b38,
