@@ -102,9 +102,21 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
         map_dfr(snps_chunked,
                 function(chunk) {
                     cat("querying chunk\n")
-                    queryHaploreg(chunk, ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
-                        mutate(Population = pop,
-                               chr = as.character(chr))
+                    retries <- 5
+                    tries <- 0
+                    while (tries <= retries) {
+                        if (tries > 0) cat("retrying chunk\n")
+                        query_response <- try(queryHaploreg(chunk, ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
+                                mutate(Population = pop,
+                                       chr = as.character(chr)))
+                        if (class(query_response)[1] != "try-error") {
+                            return(query_response)
+                        } else {
+                            Sys.sleep(60)
+                            tries <- tries + 1
+                        }
+                    }
+                    stop("haploreg error. no more retries")
                 })
     write_tsv(haploreg_results, out_file)
     return(haploreg_results)
