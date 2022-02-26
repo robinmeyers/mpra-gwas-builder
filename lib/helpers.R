@@ -43,18 +43,15 @@ query_ldlink <- function(snp, pop, out_dir, r2 = 0.8, force = F, retry_errors = 
         results <- read_tsv(potential_file, col_types = cols())
 
         if ("RS_Number" %in% colnames(results)) {
-            results %>%
+            return(results %>%
                 filter(R2 >= r2) %>%
                 mutate(RegulomeDB = as.character(RegulomeDB),
                        MAF = as.numeric(MAF),
                        Distance = as.numeric(Distance),
                        Dprime = as.numeric(Dprime),
-                       R2 = as.numeric(R2)) %>%
-                return()
+                       R2 = as.numeric(R2)))
 
-        }
-
-        if (!retry_errors) {
+        } else if (!retry_errors) {
             return(results %>% mutate(RegulomeDB = NA_character_,
                                       MAF = NA_real_,
                                       Distance = NA_real_,
@@ -102,17 +99,20 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
         map_dfr(snps_chunked,
                 function(chunk) {
                     cat("querying chunk\n")
+                    print(head(chunk))
                     retries <- 5
                     tries <- 0
                     while (tries <= retries) {
-                        if (tries > 0) cat("retrying chunk\n")
                         query_response <- try(queryHaploreg(chunk, ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
                                 mutate(Population = pop,
                                        chr = as.character(chr)))
                         if (class(query_response)[1] != "try-error") {
                             return(query_response)
                         } else {
-                            Sys.sleep(60)
+                            if (tries < retries) {
+                                cat("retrying chunk\n")
+                                Sys.sleep(60)
+                            }
                             tries <- tries + 1
                         }
                     }

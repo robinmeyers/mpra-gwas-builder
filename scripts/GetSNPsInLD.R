@@ -273,7 +273,8 @@ dir.create(out_dir_haploreg, showWarnings = F, recursive = T)
 haploreg_results <- snps_to_query %>%
     filter(pop %in% names(haploreg_pops)) %>%
     mutate(pop = haploreg_pops[pop]) %>%
-    group_by(pop, r2_threshold) %>% summarise(index_snps = list(sample(index_snp))) %>%
+    group_by(pop, r2_threshold) %>%
+    summarise(index_snps = list(sort(index_snp))) %>%
     mutate(haploreg_results = pmap(list(index_snps, pop, r2_threshold),
         ~ query_haploreg(snps = ..1, pop = ..2, r2 = ..3,
                         force = T, out_dir = out_dir_haploreg))) %>%
@@ -317,7 +318,7 @@ ldlink_snps <- ldlink_results_table %>%
 ldlink_snps_b38 <- ldlink_snps %>%
     extract(Coord, c("chr", "start"), "(chr[0-9XY]+):(\\d+)", remove = F) %>%
     mutate(end = start) %>%
-    select(chr, start, end, snp = RS_Number, index_snp, coord_b37 = Coord, ref, alt) %>%
+    select(seqnames = chr, start, end, snp = RS_Number, index_snp, coord_b37 = Coord, ref, alt) %>%
     makeGRangesFromDataFrame(keep.extra.columns = T) %>%
     liftOver(hg19_to_hg38_chain) %>% unlist %>%
     as_tibble() %>%
