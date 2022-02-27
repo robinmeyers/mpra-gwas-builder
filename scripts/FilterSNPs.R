@@ -21,13 +21,17 @@ if ("epigenome_csv" %in% names(snakemake@config) && file.exists(snakemake@config
 
     epigenome_csv <- read_csv(snakemake@config$epigenome_csv)
     epigenome_filter_keys <- epigenome_csv %>%
-    	filter(filter) %>% pull(name)
+    	filter(filter) %>% pull(name) %>%
+        str_replace_all("[^A-Za-z0-9_]", "_")
 
 } else {
 
     epigenome_keys <- names(snakemake@config$epigenome)
-    epigenome_filter_keys <- epigenome_keys[map_lgl(snakemake@config$epigenome, ~ .$filter)]
+    epigenome_filter_keys <- epigenome_keys[map_lgl(snakemake@config$epigenome, ~ .$filter)] %>%
+        str_replace_all("[^A-Za-z0-9_]", "_")
 }
+
+
 
 print(txdb_filter_keys)
 print(epigenome_filter_keys)
