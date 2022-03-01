@@ -92,34 +92,42 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
         return(haploreg_results)
     }
 
+    retries <- 5
+    tries <- 0
     chunk_index <- head(rep(1:ceiling(length(snps)/chunk_size), each = chunk_size), length(snps))
-    snps_chunked <- split(snps, chunk_index)
 
-    haploreg_results <-
-        map_dfr(snps_chunked,
-                function(chunk) {
-                    cat("querying chunk\n")
-                    print(head(chunk))
-                    retries <- 5
-                    tries <- 0
-                    while (tries <= retries) {
-                        query_response <- try(queryHaploreg(chunk, ldPop = pop, ldThresh = r2,  timeout = 1000000) %>%
-                                mutate(Population = pop,
-                                       chr = as.character(chr)))
-                        if (class(query_response)[1] != "try-error") {
-                            return(query_response)
-                        } else {
-                            if (tries < retries) {
-                                cat("retrying chunk\n")
-                                Sys.sleep(60)
-                            }
-                            tries <- tries + 1
-                        }
-                    }
-                    stop("haploreg error. no more retries")
-                })
-    write_tsv(haploreg_results, out_file)
-    return(haploreg_results)
+    while (tries <= retries) {
+
+    
+        if (tries == 0) {
+            snps_chunked <- split(snps, chunk_index)    
+        } else {
+            snps_chunked <- split(sample(snps), chunk_index)    
+        }
+        
+        haploreg_results <- try(
+            map_dfr(snps_chunked,
+                    function(chunk) {
+                        cat("querying chunk\n")
+                        print(head(chunk))
+                        query_response <- queryHaploreg(chunk, ldPop = pop, ldThresh = r2, timeout = 1000000) %>%
+                                    mutate(Population = pop,
+                                           chr = as.character(chr))
+                                })
+        )
+                     
+        if (class(haploreg_results)[1] != "try-error") {
+            write_tsv(haploreg_results, out_file)
+            return(haploreg_results)
+        } else {
+            if (tries < retries) {
+                cat("retrying haploreg queries\n")
+            }
+            tries <- tries + 1
+        }
+    }
+    stop("haploreg error. no more retries")
+    return(NULL)
 }
 
 
