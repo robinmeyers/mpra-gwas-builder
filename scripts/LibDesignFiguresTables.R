@@ -29,8 +29,8 @@ gwas_study_count %>%
     labs(y = "GWAS Studies",
          title = paste(n_distinct(gwas_snps$PUBMEDID, na.rm = T), "GWAS Studies")) +
     theme_cowplot() +
-    theme(axis.title.y = element_blank()) +
-    ggsave(file.path(fig_dir, "gwas_studies.pdf"))
+    theme(axis.title.y = element_blank())
+ggsave(file.path(fig_dir, "gwas_studies.pdf"))
 
 gwas_snp_count <- gwas_snps %>% distinct(Disease, index_snp) %>%
     group_by(Disease) %>%
@@ -42,8 +42,8 @@ gwas_snp_count %>%
     labs(y = "GWAS SNPs",
          title = paste(n_distinct(gwas_snps$SNPS, na.rm = T), "GWAS Index SNPs")) +
     theme_cowplot() +
-    theme(axis.title.y = element_blank()) +
-    ggsave(file.path(fig_dir, "index_snps_per_disease.pdf"))
+    theme(axis.title.y = element_blank())
+ggsave(file.path(fig_dir, "index_snps_per_disease.pdf"))
 
 linked_snps <- gwas_snps %>%
     select(Disease, index_snp) %>%
@@ -59,8 +59,8 @@ linked_snp_count %>%
     labs(y = "Linked SNPs",
          title = paste(n_distinct(linked_snps$snp, na.rm = T), "SNPs in LD (R2 > 0.8) with Index SNPs")) +
     theme_cowplot() +
-    theme(axis.title.y = element_blank()) +
-    ggsave(file.path(fig_dir, "linked_snps_per_disease.pdf"))
+    theme(axis.title.y = element_blank())
+ggsave(file.path(fig_dir, "linked_snps_per_disease.pdf"))
 
 
 
@@ -75,8 +75,8 @@ linked_snps %>%
     labs(x = "Number of linked SNPs",
          y = "Index SNPs",
          title = "Distribution of linked SNPs per index SNP") +
-    theme_cowplot() +
-    ggsave(file.path(fig_dir, "linked_snps_per_index_snp.pdf"))
+    theme_cowplot()
+ggsave(file.path(fig_dir, "linked_snps_per_index_snp.pdf"))
 
 
 
@@ -94,8 +94,8 @@ filtered_snp_count %>%
     labs(y = "Filtered SNPs",
          title = paste(n_distinct(filtered_snps$snp, na.rm = T), "SNPs post filtering")) +
     theme_cowplot() +
-    theme(axis.title.y = element_blank()) +
-    ggsave(file.path(fig_dir, "filtered_snps_per_disease.pdf"))
+    theme(axis.title.y = element_blank())
+ggsave(file.path(fig_dir, "filtered_snps_per_disease.pdf"))
 
 
 filtered_snps %>% distinct(index_snp, snp) %>%
@@ -108,8 +108,8 @@ filtered_snps %>% distinct(index_snp, snp) %>%
     labs(x = "Number of filtered SNPs",
          y = "Index SNPs",
          title = "Distribution of filtered SNPs per index SNP") +
-    theme_cowplot() +
-    ggsave(file.path(fig_dir, "filtered_snps_per_index_snp.pdf"))
+    theme_cowplot()
+ggsave(file.path(fig_dir, "filtered_snps_per_index_snp.pdf"))
 
 
 epigenome_snps <- epigenome_snps_raw %>%
@@ -124,8 +124,8 @@ epigenome_snps %>%
     geom_bar() +
     coord_flip() +
     labs(x = "Peak set", y = "Filtered SNPs") +
-    theme_cowplot() +
-    ggsave(file.path(fig_dir, "filtered_snps_per_peakset.pdf"))
+    theme_cowplot()
+ggsave(file.path(fig_dir, "filtered_snps_per_peakset.pdf"))
 
 
 peak_stats <- read_csv(snakemake@input$peak_stats)
@@ -140,8 +140,8 @@ epigenome_stats %>%
     geom_col() +
     coord_flip() +
     labs(x = "Peak set", y = "SNPs per Mb") +
-    theme_cowplot() +
-    ggsave(file.path(fig_dir, "filtered_snps_per_peakset_mb.pdf"))
+    theme_cowplot()
+ggsave(file.path(fig_dir, "filtered_snps_per_peakset_mb.pdf"))
 
 final_snps <- filtered_snps %>%
     select(Disease, index_snp, snp) %>%
@@ -160,7 +160,7 @@ final_snp_count %>%
          title = paste(n_distinct(final_snps$fragment, na.rm = T), "SNPs in final library")) +
     theme_cowplot() +
     theme(axis.title.y = element_blank())
-    ggsave(file.path(fig_dir, "final_snps_per_disease.pdf"))
+ggsave(file.path(fig_dir, "final_snps_per_disease.pdf"))
 
 
 final_snps %>%
@@ -174,8 +174,8 @@ final_snps %>%
     labs(x = "Number of linked SNPs",
          y = "Index SNPs",
          title = "Distribution of linked SNPs per index SNP in final library") +
-    theme_cowplot() +
-    ggsave(file.path(fig_dir, "final_snps_per_index_snp.pdf"))
+    theme_cowplot()
+ggsave(file.path(fig_dir, "final_snps_per_index_snp.pdf"))
 
 
 stats_table <- gwas_snp_count %>% rename(GWAS_SNPs = n) %>%
