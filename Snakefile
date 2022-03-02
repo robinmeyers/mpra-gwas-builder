@@ -72,11 +72,18 @@ rule get_gwas_snps:
     script:
         "scripts/GetSNPsFromGWAS.R"
 
-rule get_snps_in_LD:
+rule clean_index_snps:
     input:
         gwas = "outs/{study}_gwas.tsv"
     output:
-        index_snps = "outs/{study}_index_snps.csv",
+        index_snps = "outs/{study}_index_snps.csv"
+    log: "logs/{study}_clean_index_snps.log"
+    script: "scripts/CleanIndexSNPs.R"
+
+rule get_snps_in_LD:
+    input:
+        index_snps = "outs/{study}_index_snps.csv"
+    output:
         ld_snps = "outs/{study}_ld_snps.tsv"
     log: "logs/{study}_ld_snps.log"
     script: "scripts/GetSNPsInLD.R"
