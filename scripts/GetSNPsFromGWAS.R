@@ -1,7 +1,14 @@
 
-log <- file(snakemake@log[[1]], open="wt")
-sink(log, type = "message")
-sink(log, type = "output")
+if (!interactive()) {
+    readr::write_rds(snakemake, paste0(snakemake@log[[1]], ".snakemake.rds"))
+    log <- file(snakemake@log[[1]], open="wt")
+    sink(log, type = "message")
+    sink(log, type = "output")
+} else {
+#   setwd(here::here(".test"))
+#   snakemake <- readr::read_rds("outs/dewseq/ABCF1_HepG2_UVC/snakemake.rds")
+}
+
 
 library(tidyverse)
 
@@ -18,19 +25,12 @@ if (!is.null(snakemake@config$gwas_trait_key)) {
     gwas_trait_key <- "DISEASE/TRAIT"
 }
 
-if (!is.null(snakemake@config$extra_gwas) && snakemake@config$extra_gwas != "") {
-    extra_gwas <- read_tsv(snakemake@config$extra_gwas,
-        col_types = cols(.default = col_character()), quote = "")
-} else {
-    extra_gwas <- tibble()
-}
 
 
 gwas_index_snps <- gwas_catalog %>%
     filter(.data[[gwas_trait_key]] %in% disease_list$GWAS_term,
            as.numeric(`P-VALUE`) <= as.numeric(snakemake@config$gwas_pvalue_threshold)) %>%
     filter(str_detect(SNPS, "rs\\d+ x rs\\d+", negate = T)) %>%
-    bind_rows(extra_gwas) %>%
     left_join(disease_list, by = set_names("GWAS_term", gwas_trait_key))
 
 

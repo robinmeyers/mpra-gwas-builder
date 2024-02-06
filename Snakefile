@@ -76,7 +76,8 @@ rule clean_index_snps:
     input:
         gwas = "outs/{study}_gwas.tsv"
     output:
-        index_snps = "outs/{study}_index_snps.csv"
+        index_snps = "outs/{study}_index_snps.csv",
+        index_snps_unique = "outs/{study}_index_snps_unique.csv"
     log: "logs/{study}_clean_index_snps.log"
     script: "scripts/CleanIndexSNPs.R"
 

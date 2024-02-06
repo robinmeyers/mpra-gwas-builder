@@ -70,7 +70,8 @@ epigenome_keys <- epigenome_df$key
 epigenome_bed <- epigenome_df$bed %>% set_names(epigenome_df$key)
 
 ld_snps_gr <- ld_snps %>%
-    filter(!is.na(coord_b38)) %>%
+    filter(!is.na(coord_b38),
+           str_detect(coord_b38, "(chr[0-9XY]+):(\\d+)")) %>%
     extract(coord_b38, c("chr", "pos"), "(chr[0-9XY]+):(\\d+)", remove = F) %>%
     mutate(start = pos, end = pos) %>%
     select(-pos) %>%

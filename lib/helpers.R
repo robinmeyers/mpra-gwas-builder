@@ -110,7 +110,9 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
                     function(chunk) {
                         cat("querying chunk\n")
                         print(head(chunk))
-                        query_response <- queryHaploreg(chunk, ldPop = pop, ldThresh = r2, timeout = 1000000) %>%
+                        query_response <- queryHaploreg(chunk, ldPop = pop, ldThresh = r2, timeout = 1000000)
+                        print(query_response)
+                        query_response %>%
                                     mutate(Population = pop,
                                            chr = as.character(chr))
                                 })
@@ -126,7 +128,7 @@ query_haploreg <- function(snps, pop, out_dir, r2 = 0.8, force = F, chunk_size =
             tries <- tries + 1
         }
     }
-    stop("haploreg error. no more retries")
+    warning("haploreg error. no more retries")
     return(NULL)
 }
 

@@ -1,12 +1,13 @@
 ## Long-running script due to many API queries
 
+if (!interactive()) {
+    readr::write_rds(snakemake, paste0(snakemake@log[[1]], ".snakemake.rds"))
+    log <- file(snakemake@log[[1]], open="wt")
+    sink(log, type = "message")
+    sink(log, type = "output")
+} 
+
 readRenviron(".Renviron")
-
-save.image("logs/get_snps_in_ld.RData")
-
-log <- file(snakemake@log[[1]], open="wt")
-sink(log, type = "message")
-sink(log, type = "output")
 
 if (! "haploR" %in% rownames(installed.packages())) {
     options(repos = list(CRAN="http://cran.rstudio.com/"))
@@ -49,129 +50,12 @@ r2_threshold_pop_specific <- snakemake@config$r2_threshold_pop_spec
 pops <- snakemake@config$pops
 # pops <- c("EUR", "AFR", "AMR", "EAS", "SAS", "ALL")
 
-if (!is.null(snakemake@config$gwas_pop_key)) {
-    gwas_pop_key <- read_tsv(snakemake@config$gwas_pop_key)
 
-    sample_types <- c("individuals?",
-                      "cases?",
-                      "controls?",
-                      "men",
-                      "women",
-                      "boys?",
-                      "girls?",
-                      "adults?",
-                      "adolescents?",
-                      "children and adolescents",
-                      "children",
-                      "infants?",
-                      "neonates?",
-                      "mothers?",
-                      "fathers?",
-                      "parents?",
-                      "males?",
-                      "females?",
-                      "users?",
-                      "non-users?",
-                      "families",
-                      "trios?",
-                      "responders?",
-                      "non-responders?",
-                      "attempters?",
-                      "nonattempters?",
-                      "alcohol drinkers?",
-                      "drinkers?",
-                      "non-drinkers?",
-                      "smokers?",
-                      "non-smokers?",
-                      "donors?",
-                      "twin pairs?",
-                      "twins?",
-                      "child sibling pairs?",
-                      "fetuses",
-                      "offspring",
-                      "early adolescents?",
-                      "remitters?",
-                      "non-remitters?",
-                      "athletes?",
-                      "Individuals?",
-                      "indivduals?",
-                      "triads?",
-                      "patients?",
-                      "pairs?",
-                      "case-parent trios?",
-                      "recipients?",
-                      "affected child",
-                      "long sleepers?",
-                      "short sleepers?",
-                      "unaffected relatives?",
-                      "carriers?",
-                      "non-carriers?",
-                      "cell lines?",
-                      "indiviudals?",
-                      "referents?",
-                      "individuuals?",
-                      "duos?",
-                      "indivdiuals?",
-                      "inidividuals?")
-
-    number_regex <- "(?:(?<=(?:\\s|\\b))\\d+(?:\\,\\d+)*(?=\\s))"
-    type_regex <- paste0("(?:", paste0(sample_types, collapse = "|"), ")")
-
-
-    full_regex <- paste0(
-        "(", number_regex, ")", # greedy match first number
-        "\\s*((?:(?!.*", type_regex, ").*)|(?:.*?))\\s*", # Greedy match rest if no sample type in lookahead, or passive match
-        "(", type_regex,  "?(?!.*", type_regex, "))") # Match last sample type by ensuring no sample type in lookahead
-
-    # split_regex <- "(?<!\\d)(,[\\s\\,]*| and )(?=[\\sA-Aa-z]*[0-9]+[,0-9]*[0-9]+\\s)"
-    split_regex <- paste0("((?:,+[,\\s]*\\s+)|(?:and ))(?=[\\sA-Aa-z]*", number_regex, ")")
-
-
-    sample_terms <- index_snps_cleaned %>%
-        distinct(pubmed, sample) %>%
-        mutate(split_sample = str_split(sample, split_regex)) %>%
-        unnest(split_sample)
-
-
-    full_matches <- bind_cols(sample_terms,
-                              str_match(sample_terms$split_sample, full_regex) %>%
-                                  set_colnames(c("match", "number", "capture", "type")) %>%
-                                  as_tibble())
-
-    study_key_table <- full_matches %>%
-        distinct(pubmed, sample, split_sample, capture) %>%
-        rename(term = capture) %>%
-        left_join(gwas_pop_key) %>%
-        filter(!is.na(code))
-
-    index_snps_pop_match <- index_snps_cleaned %>%
-        left_join(study_key_table) %>%
-        distinct() %>%
-        group_by(disease, gwas_snp, index_snp, coord_b38, coord_b37, pubmed, sample) %>%
-        summarise(pops = paste0(sort(unique(unlist(str_split(code, ",")))), collapse = ",")) %>%
-        ungroup()
-
-
-    write_tsv(index_snps_pop_match, "outs/gwas_study_index_snps_matched_populations.tsv")
-
-    index_snps_pop_match %>%
-        group_by(disease, pubmed, sample, pops) %>%
-        summarise(n_snps = n_distinct(index_snp, na.rm = T)) %>%
-        write_tsv("outs/gwas_study_matched_populations.tsv")
-
-
-} else {
-    index_snps_pop_match <- tibble(disease = character(),
-                                   pubmed = character(),
-                                   sample = character(),
-                                   index_snp = character(),
-                                   pops = character())
-}
 
 max_pops <- snakemake@config$max_pops
 
 
-index_snps_pop_match_filtered <- index_snps_pop_match %>%
+index_snps_pop_match_filtered <- index_snps_cleaned %>%
     filter(!is.na(pops) & pops != "") %>%
     filter(map_lgl(str_split(pops, ","), ~ length(.) <= max_pops))
 
@@ -228,7 +112,10 @@ if (nrow(haploreg_results) > 0) {
         select(pop, r2_threshold, haploreg_results) %>%
         unnest(haploreg_results) %>%
         select(index_snp = query_snp_rsid, everything()) %>%
-        filter(r2 >= r2_threshold)
+        filter(r2 >= r2_threshold) %>%
+        mutate(chrtmp = str_replace(chr, "Array", ""),
+               chr = ifelse(str_detect(chrtmp, "^(\\d+|[XY])$"), paste0("chr", chrtmp), chrtmp)) %>%
+        mutate(chrtmp = NULL)
 } else {
     haploreg_results_table <- tibble(
         index_snp = character(),
@@ -261,13 +148,13 @@ ldlink_snps <- ldlink_results_table %>%
 ldlink_snps_b38 <- ldlink_snps %>%
     extract(Coord, c("chr", "start"), "(chr[0-9XY]+):(\\d+)", remove = F) %>%
     mutate(end = start) %>%
-    select(seqnames = chr, start, end, snp = RS_Number, index_snp, coord_b37 = Coord, ref, alt) %>%
+    select(seqnames = chr, start, end, snp = RS_Number, index_snp, coord_b37 = Coord, ref, alt, pop = pop, R2, Dprime) %>%
     makeGRangesFromDataFrame(keep.extra.columns = T) %>%
     liftOver(hg19_to_hg38_chain) %>% unlist %>%
     as_tibble() %>%
     mutate(coord_b38 = paste0(seqnames, ":", start),
            snp = ifelse(is.na(snp) | !str_detect(snp, "^rs\\d+"), coord_b38, snp)) %>%
-    select(snp, coord_b38, ref, alt, index_snp, coord_b37) %>%
+    select(snp, coord_b38, ref, alt, index_snp, coord_b37, pop, R2, Dprime) %>%
     distinct()
 
 
@@ -275,8 +162,8 @@ ldlink_snps_b38 <- ldlink_snps %>%
 ## HaploReg data is in hg38 coordinates, but not all snps returned have genome coordinates
 
 haploreg_snps <- haploreg_results_table %>%
-    mutate(coord_b38 = ifelse(is.na(chr), NA, paste0("chr", chr, ":", pos_hg38))) %>%
-    select(snp = rsID, coord_b38, ref, alt, index_snp)
+    mutate(coord_b38 = ifelse(is.na(chr) | is.na(pos_hg38), NA, paste0(chr, ":", pos_hg38))) %>%
+    select(snp = rsID, coord_b38, ref, alt, index_snp, pop, R2 = r2, Dprime = `D'`)
 
 haploreg_snps_no_coord <- haploreg_snps %>%
     filter(is.na(coord_b38)) %>% pull(snp) %>% unique()
