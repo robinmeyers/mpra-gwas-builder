@@ -85,11 +85,12 @@ eqtls:
       file: data/Skin_Sun_Exposed_Lower_leg.v8.signif_variant_gene_pairs.txt.gz
       filter: false
 
+revcomp: True # Reverse complement all of the fragments, doubling the library size
 
 sub_libraries: 1
 
 barcodes: assets/barcodes16-1.txt
-bc_per_frag: 10
+bc_per_frag: 10 # Set to 0 for no barcodes. No internal cloning site will be included. For soft-barcoded libraries.
 
 # how many scramble control pairs
 random_controls: 250
@@ -105,6 +106,7 @@ oligo:
 
 # List all enzymes used in cloning.
 # These sites will be randomly mutated if they exist in the genomic sequence
+# comment out the list if not using restriction enzymes to clone
 restriction_enzymes:
   EcoRI: GAATTC
   BamHI: GGATCC
